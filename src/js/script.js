@@ -10,7 +10,6 @@ function game() {
     //initialisation des variables
     var character = document.getElementById('character');
     var finishline = document.getElementById('finishline');
-    var smoke = document.getElementById('smoke');
     var obstacles = document.querySelectorAll('.game__obstacle');
     document.querySelector('.game__score--jacket').innerText += " " +scorejacket + "/1";
     var yellowjacket = document.getElementById('yellowjacket');
@@ -56,6 +55,7 @@ function game() {
             oxo.screens.loadScreen('end');
         });
     })
+    
 };
 
 function createObstacles() {
@@ -193,5 +193,44 @@ function createObstacles() {
         appendTo: 'body' // optional
       });
 
+     // ennemi smoke
+     var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__smoke', // optional,
+        styles: { // optional
+          transform: 'translate(900px, 200px)'
+        },
+        appendTo: 'body' // optional
+      });
+   
 
+   //collision avec la fumée quand elle est active
+   var smoke = document.querySelector('.game__smoke');
+   var deadlysmoke = document.querySelectorAll('.game__enemy');
+
+   setInterval(function () {
+    smoke.classList.remove('game__enemy');
+    deadlysmoke = document.querySelectorAll('.game__enemy');
+
+
+    setTimeout(function () {
+        smoke.classList.add('game__enemy');
+        deadlysmoke = document.querySelectorAll('.game__enemy');
+        
+        deadlysmoke.forEach(element => {
+            oxo.elements.onCollisionWithElementOnce(character, element, function() {
+                //le niveau est fini
+                console.log('niveau fini');
+                oxo.screens.loadScreen('end');
+            });
+        })
+        }, 1500);
+
+    setTimeout(function () {
+        smoke.classList.remove('game__enemy');
+        deadlysmoke = document.querySelectorAll('.game__enemy');
+        
+    }, 4500);
+
+}, 6000);
 }
