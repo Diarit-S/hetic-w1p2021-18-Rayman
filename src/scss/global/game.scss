@@ -1,0 +1,20 @@
+.game___character {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    transform: translate(640px, 750px);
+}
+
+.game___obstacle {
+    width: 250px;
+    height: 75px;
+    background-color: blue;
+    transform: translate(100px, 200px);
+}
+
+.game___finish {
+    width: 100vw;
+    height: 30px;
+    background-color: gold;
+    position: absolute;
+}
