@@ -113,7 +113,7 @@ window.oxo = {
           y: values[1],
         };
       } else {
-        return { x: 0, y: 0 };
+        return { x: 640, y: 700 };
       }
     },
 
@@ -125,7 +125,6 @@ window.oxo = {
      */
     setPosition(element, position) {
       var transform = element.style.transform.replace(/translate\(.+\)/, '');
-
 
       var translation = 'translate(' + position.x + 'px, ' + position.y + 'px)';
 

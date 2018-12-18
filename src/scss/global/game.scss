@@ -1,20 +1,34 @@
-.game___character {
+.game__character {
     width: 20px;
     height: 20px;
     background-color: red;
     transform: translate(640px, 700px);
 }
 
-.game___obstacle {
+.game__obstacle {
     width: 250px;
     height: 75px;
     background-color: blue;
     transform: translate(100px, 200px);
 }
 
-.game___finishline {
+.game__obstacle+.second {
+    width: 250px;
+    height: 75px;
+    background-color: blue;
+    transform: translate(400px, 200px);
+}
+
+.game__finishline {
     width: 100vw;
     height: 30px;
     background-color: gold;
     position: absolute;
+}
+
+.game__yellowjacket {
+    width: 10px;
+    height: 10px;
+    background-color: aqua;
+    transform: translate(700px, 600px);
 }

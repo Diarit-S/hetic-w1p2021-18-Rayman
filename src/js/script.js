@@ -1,18 +1,31 @@
-var direction;
-
 oxo.screens.loadScreen('game', function() {
     game();
 });
 
 function game() {
+    //initialisation des variables
     var character = document.getElementById('character');
-    var ennemy = document.getElementById('obstacle');
     var finishline = document.getElementById('finishline');
-    oxo.animation.moveElementWithArrowKeys(character, 10);
-    oxo.elements.onCollisionWithElementOnce(character, ennemy, function() {
-        //character est bloqué
-        console.log('collision avec obstacle');
+    var obstacles = document.querySelectorAll('.game__obstacle');
+    var yellowjacket = document.getElementById('yellowjacket');
+
+    //bouger character avec les keys directionnelles
+    oxo.animation.moveElementWithArrowKeys(character, 30);
+    
+    obstacles.forEach(obstacle => {
+        oxo.elements.onCollisionWithElement(character, obstacle, function() {
+            //character est bloqué
+            console.log('collision avec obstacle');
+        });
     });
+
+    //Si collision avec le gilet jaune
+    oxo.elements.onCollisionWithElementOnce(character, yellowjacket, function() {
+        //on supprime l'element et on l'ajout à l'inventaire
+        yellowjacket.remove();
+    });
+
+
     //Si collision entre character et ligne d'arrivée
     oxo.elements.onCollisionWithElementOnce(character, finishline, function() {
         //le niveau est fini
