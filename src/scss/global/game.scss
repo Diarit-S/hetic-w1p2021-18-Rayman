@@ -6,18 +6,13 @@
 }
 
 .game__obstacle {
-    width: 250px;
-    height: 75px;
+    width: 75px;
+    height: 220px;
     background-color: blue;
-    transform: translate(100px, 200px);
+    position: absolute;
+
 }
 
-.game__obstacle+.second {
-    width: 250px;
-    height: 75px;
-    background-color: blue;
-    transform: translate(400px, 200px);
-}
 
 .game__finishline {
     width: 100vw;
@@ -31,4 +26,43 @@
     height: 10px;
     background-color: aqua;
     transform: translate(700px, 600px);
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.game__cap {
+    width: 10px;
+    height: 10px;
+    background-color: violet;
+    transform: translate(700px, 620px);
+}
+
+.game__tank {
+    width : 200px;
+    height: 200px;
+    background-color: green;
+    transform: translate(70px, 200px);
+
+
+    @keyframes show-and-hide {
+        from {
+            width: 20px;
+            height: 30px;
+            background-color: aqua;
+            transform: translate(190px, 20px); 
+        }
+      
+        to {
+            width: 200px;
+            height: 30px;
+            background-color: aqua;
+            transform: translate(190px, 20px); 
+        }
+      }
+
+     .water {
+        animation: show-and-hide 2s infinite alternate;
+    }
 }
