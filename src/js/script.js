@@ -1,5 +1,6 @@
 oxo.screens.loadScreen('game', function() {
     game();
+    
 });
 
 function game() {
