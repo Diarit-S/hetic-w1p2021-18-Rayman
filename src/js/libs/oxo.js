@@ -126,6 +126,7 @@ window.oxo = {
     setPosition(element, position) {
       var transform = element.style.transform.replace(/translate\(.+\)/, '');
 
+
       var translation = 'translate(' + position.x + 'px, ' + position.y + 'px)';
 
       return (element.style.transform = transform + translation);
