@@ -55,7 +55,7 @@ function game() {
             oxo.screens.loadScreen('end');
         });
     })
-    
+
 };
 
 function createObstacles() {
