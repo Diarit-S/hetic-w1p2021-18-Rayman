@@ -7,12 +7,43 @@
     height: 100vh;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-color: #FFF491;
+    background-color: #FFEE5B;
     font-family: 'obelixpro';
+    
 }
 
 
-.end__restart {
+.end__title {
+    font-size: 40px;
+    margin-bottom: 40px;
+   
+}
 
+.end__button {
+    margin-bottom: 20px;
+    font-size: 30px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+
+    &:hover {
+        color : red;
+        cursor: pointer;
+    }
+}
+
+.end__button--return {
+    font-size: 10px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+
+    &:hover {
+        color : red;
+        cursor: pointer;
+    }
 }
