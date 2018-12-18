@@ -48,6 +48,11 @@ function game() {
         document.querySelector('.game__score--cap').innerText = "Bonnet : " + scorecap + "/1";
     });
 
+    oxo.elements.onCollisionWithElementOnce(character,finishline, function(){
+        if( scorecap && scorejacket !== 0)
+        oxo.screens.loadScreen('end');
+    })
+
     //Si collision entre ennemis et character game over
     enemies.forEach(element => {
         oxo.elements.onCollisionWithElementOnce(character, element, function() {
@@ -179,18 +184,12 @@ function createObstacles() {
       var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__enemy', // optional,
-        styles: { // optional
-          transform: 'translate(1065px, 50px)'
-        },
         appendTo: 'body' // optional
       });
 
       var element = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__enemy', // optional,
-        styles: { // optional
-          transform: 'translate(1035px, 50px)'
-        },
+        class: 'game__enemy ennemy2', // optional,
         appendTo: 'body' // optional
       });
 

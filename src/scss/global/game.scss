@@ -1,3 +1,21 @@
+@keyframes moves2 {
+   
+
+    to {
+        transform: translate(1200px,290px);
+    }
+}
+
+@keyframes moves {
+   
+    to {
+        transform: translate(700px,50px);
+    }
+
+   
+
+}
+
 .game__character {
     width: 20px;
     height: 20px;
@@ -9,16 +27,23 @@
     width: 20px;
     height: 20px;
     background-color: red;
-    transform: translate(640px, 700px);
     position: absolute;
+    transform: translate(450px, 50px);
+    animation: moves 2s infinite alternate linear;
+     
 }
+
+.ennemy2{
+    animation: moves2 2s infinite alternate linear;
+    transform: translate(888px, 290px)
+}
+
 
 .game__obstacle {
     width: 75px;
     height: 220px;
     background-color: blue;
     position: absolute;
-
 }
 
 
@@ -34,7 +59,7 @@
     width: 10px;
     height: 10px;
     background-color: aqua;
-    transform: translate(700px, 600px);
+    transform: translate(190px, 600px);
 }
 
 .game__score {
@@ -50,7 +75,7 @@
     width: 10px;
     height: 10px;
     background-color: violet;
-    transform: translate(700px, 620px);
+    transform: translate(655px, 420px);
 }
 .game__barriere {
     width: 200px;
@@ -87,7 +112,6 @@
     }
 }
 
-
 .game__smoke {
     width: 200px;
     height: 200px;
@@ -112,4 +136,5 @@
 
   animation: smoke 3s infinite alternate;
     }
+
 
