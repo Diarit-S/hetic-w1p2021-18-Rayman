@@ -4,20 +4,24 @@ oxo.screens.loadScreen('game', function() {
 
 function game() {
     //initialisation des variables
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__obstacle', // optional,
+        obstacle: true, // optional,
+        appendTo: 'body' // optional
+    });
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__obstacle second', // optional,
+        obstacle: true, // optional,
+        appendTo: 'body' // optional
+    });
     var character = document.getElementById('character');
     var finishline = document.getElementById('finishline');
-    var obstacles = document.querySelectorAll('.game__obstacle');
     var yellowjacket = document.getElementById('yellowjacket');
 
     //bouger character avec les keys directionnelles
     oxo.animation.moveElementWithArrowKeys(character, 30);
-    
-    obstacles.forEach(obstacle => {
-        oxo.elements.onCollisionWithElement(character, obstacle, function() {
-            //character est bloqué
-            console.log('collision avec obstacle');
-        });
-    });
 
     //Si collision avec le gilet jaune
     oxo.elements.onCollisionWithElementOnce(character, yellowjacket, function() {
