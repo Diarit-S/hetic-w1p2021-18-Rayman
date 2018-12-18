@@ -1,8 +1,16 @@
 .game__character {
     width: 20px;
     height: 20px;
+    background-color: yellow;
+    transform: translate(640px, 700px);
+}
+
+.game__enemy {
+    width: 20px;
+    height: 20px;
     background-color: red;
     transform: translate(640px, 700px);
+    position: absolute;
 }
 
 .game__obstacle {
@@ -15,10 +23,11 @@
 
 
 .game__finishline {
-    width: 100vw;
-    height: 30px;
-    background-color: gold;
+    width: 200px;
+    height: 20px;
+    background-color:yellow; 
     position: absolute;
+    transform: translate(220px, 90px);
 }
 
 .game__yellowjacket {
@@ -38,12 +47,18 @@
     background-color: violet;
     transform: translate(700px, 620px);
 }
-
+.game__barriere {
+    width: 200px;
+    height: 20px;
+    background-color:black; 
+    position: absolute;
+}
 .game__tank {
     width : 200px;
     height: 200px;
     background-color: green;
     transform: translate(70px, 200px);
+    position: absolute;
 
 
     @keyframes show-and-hide {
