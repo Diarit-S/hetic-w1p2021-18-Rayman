@@ -32,3 +32,65 @@
     background-color: aqua;
     transform: translate(700px, 600px);
 }
+
+.game__score {
+    color : black;
+    font-size: 100px;
+}
+
+.game__tank {
+    width : 200px;
+    height: 200px;
+    background-color: green;
+    transform: translate(70px, 200px);
+
+
+    @keyframes show-and-hide {
+        from {
+            width: 20px;
+            height: 30px;
+            background-color: aqua;
+            transform: translate(190px, 20px); 
+        }
+      
+        to {
+            width: 200px;
+            height: 30px;
+            background-color: aqua;
+            transform: translate(190px, 20px); 
+        }
+      }
+
+     .water {
+        animation: show-and-hide 2s infinite alternate;
+    }
+}
+
+
+.game__smoke {
+    width: 200px;
+    height: 200px;
+    transform: translate(900px, 0px);
+  
+ 
+   
+ 
+ 
+ @keyframes smoke {
+    0% {
+        background-color: transparent;
+    }
+     50%{
+        background-color: transparent;
+    }
+    100% {
+        background-color: grey;
+    }
+  }
+
+  animation: smoke 3s infinite alternate;
+    }
+
+ 
+ 
+ 
