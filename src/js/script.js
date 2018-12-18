@@ -41,7 +41,6 @@ function game() {
 
 
     
-};
     oxo.elements.onCollisionWithElementOnce(character, cap, function() {
         //on supprime l'element et on l'ajout à l'inventaire
         scorecap = 1;

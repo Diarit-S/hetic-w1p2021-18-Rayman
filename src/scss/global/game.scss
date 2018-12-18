@@ -37,13 +37,11 @@
     transform: translate(700px, 600px);
 }
 
-<<<<<<< HEAD
 .game__score {
     color : black;
     font-size: 100px;
 }
 
-=======
 .invisible {
     opacity: 0;
 }
@@ -60,16 +58,12 @@
     background-color:black; 
     position: absolute;
 }
->>>>>>> 70b0bd7df5376fc39cf4c571d09c330c2b9f1da8
 .game__tank {
     width : 200px;
     height: 200px;
     background-color: green;
     transform: translate(70px, 200px);
-<<<<<<< HEAD
-=======
     position: absolute;
->>>>>>> 70b0bd7df5376fc39cf4c571d09c330c2b9f1da8
 
 
     @keyframes show-and-hide {
@@ -91,14 +85,14 @@
      .water {
         animation: show-and-hide 2s infinite alternate;
     }
-<<<<<<< HEAD
 }
 
 
 .game__smoke {
     width: 200px;
     height: 200px;
-    transform: translate(900px, 0px);
+    transform: translate(900px, 200px);
+    position: absolute;
   
  
    
@@ -119,9 +113,3 @@
   animation: smoke 3s infinite alternate;
     }
 
- 
- 
- 
-=======
-}
->>>>>>> 70b0bd7df5376fc39cf4c571d09c330c2b9f1da8
