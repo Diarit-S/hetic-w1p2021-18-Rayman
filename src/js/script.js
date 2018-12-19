@@ -1,9 +1,16 @@
+<<<<<<< HEAD
+// var character;
+// oxo.screens.loadScreen('game', function() {
+//     game();
+// });
+=======
 var character;
 oxo.screens.loadScreen('game', function() {
     game();
     
 });
 
+>>>>>>> 03838f513edbfd4627e2f761ef863094beabe9bb
 
 
 
@@ -514,11 +521,3 @@ setInterval(setDeadlySmoke, 6000);
   };
 
 // End Page 
-
-var buttonGame = document.querySelector('.end__button--game');
-
-buttonGame.addEventListener('click', function(){
-  oxo.screens.loadScreen('game', function() {
-    game();
-  })
-});
