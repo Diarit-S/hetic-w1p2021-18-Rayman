@@ -189,7 +189,7 @@ function createObstacles() {
      // ennemi smoke
      var element = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__smoke game__enemy', // optional,
+        class: 'game__smoke game__enemy--smoke', // optional,
         styles: { // optional
           transform: 'translate(900px, 200px)'
         },
@@ -205,21 +205,21 @@ function createObstacles() {
 function setDeadlySmoke() {
     //collision avec la fumée quand elle est active
    var smoke = document.querySelector('.game__smoke');
-   var deadlysmoke = document.querySelectorAll('.game__enemy');
+   var deadlysmoke = document.querySelectorAll('.game__enemy--smoke');
 
     
-        smoke.classList.remove('game__enemy');
-        deadlysmoke = document.querySelectorAll('.game__enemy');
+        smoke.classList.remove('game__enemy--smoke');
+        deadlysmoke = document.querySelectorAll('.game__enemy--smoke');
     
     
         setTimeout(function () {
-            smoke.classList.add('game__enemy');
-            deadlysmoke = document.querySelectorAll('.game__enemy');
+            smoke.classList.add('game__enemy--smoke');
+            deadlysmoke = document.querySelectorAll('.game__enemy--smoke');
             
             deadlysmoke.forEach(element => {
                 oxo.elements.onCollisionWithElementOnce(character, element, function() {
                     console.log(element);
-                    if (element.classList.contains('game__enemy')) {
+                    if (element.classList.contains('game__enemy--smoke')) {
                          //le niveau est fini
                     console.log('niveau fini');
                     oxo.screens.loadScreen('end');
@@ -230,8 +230,8 @@ function setDeadlySmoke() {
             }, 1500);
     
         setTimeout(function () {
-            smoke.classList.remove('game__enemy');
-            deadlysmoke = document.querySelectorAll('.game__enemy');
+            smoke.classList.remove('game__enemy--smoke');
+            deadlysmoke = document.querySelectorAll('.game__enemy--smoke');
             
         }, 4500);
     
