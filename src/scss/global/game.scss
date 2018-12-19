@@ -71,10 +71,27 @@ background-color: grey;
     position: absolute;
 }
 
-// .game__score {
-//     color : black;
-//     font-size: 100px;
-// }
+.game__score--sign {
+    position: absolute;
+    transform: translate(15px , 15px);
+    font-family: 'obelixpro';
+    font-size: 10px;
+}
+
+.game__score--megaphone {
+    position: absolute;
+    transform: translate(15px , 2px);
+    font-family: 'obelixpro';
+    font-size: 10px;
+}
+
+.game__score--cone {
+    position: absolute;
+    transform: translate(15px , 5px);
+    font-family: 'obelixpro';
+    font-size: 10px;
+}
+
 
 .game__score--jacket{
     position: absolute;
