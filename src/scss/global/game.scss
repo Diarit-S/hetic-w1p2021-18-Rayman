@@ -19,7 +19,8 @@
 .game__character {
     width: 20px;
     height: 20px;
-    background-color: yellow;
+    background-color: white;
+    background-image: url('../medias/gilet.svg');
     transform: translate(640px, 700px);
 }
 
@@ -62,6 +63,7 @@
     width: 10px;
     height: 10px;
     background-color: aqua;
+    background-image: url('../medias/gilet.svg');
     transform: translate(190px, 600px);
 }
 
@@ -78,6 +80,7 @@
     width: 10px;
     height: 10px;
     background-color: violet;
+    background-image: url('../medias/cap.svg');
     transform: translate(655px, 420px);
 }
 .game__barriere {
@@ -120,24 +123,27 @@
     height: 200px;
     transform: translate(900px, 200px);
     position: absolute;
-  
+
  
    
  
  
- @keyframes smoke {
-    0% {
-        background-color: transparent;
-    }
-     50%{
-        background-color: transparent;
-    }
-    100% {
-        background-color: grey;
-    }
+ 
+
+  &.game__enemy {
+    @keyframes smoke {
+
+        0%{
+            background-color: rgba(128, 128, 128, 0)
+        }
+
+        80% {
+            background-color: rgba(128, 128, 128, 0.473)
+        }
+       
+      }
+        animation: smoke 4.5s infinite alternate;
+      
   }
-
-  animation: smoke 3s infinite alternate;
-    }
-
+}
 

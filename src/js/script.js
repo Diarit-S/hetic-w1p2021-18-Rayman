@@ -12,7 +12,6 @@ function game() {
     var character = document.getElementById('character');
     var finishline = document.getElementById('finishline');
     var obstacles = document.querySelectorAll('.game__obstacle');
-    document.querySelector('.game__score--jacket').innerText += " " +scorejacket + "/1";
     var yellowjacket = document.getElementById('yellowjacket');
     var water = document.querySelector('.water');
     var enemies = document.querySelectorAll('.game__enemy');
@@ -30,13 +29,6 @@ function game() {
         scorejacket = 1;
         yellowjacket.classList.add('invisible');
         document.querySelector('.game__score--jacket').innerText = "Gilet jaune : " + scorejacket + "/1";
-    });
-
-
-    //Si collision entre character et ligne d'arrivée
-    oxo.elements.onCollisionWithElementOnce(character, finishline, function() {
-        //le niveau est fini
-        console.log('niveau fini');
     });   
 
 
@@ -49,8 +41,9 @@ function game() {
     });
 
     oxo.elements.onCollisionWithElementOnce(character,finishline, function(){
-        if( scorecap && scorejacket !== 0)
-        oxo.screens.loadScreen('end');
+        if( scorecap == 1 && scorejacket == 1) {
+            oxo.screens.loadScreen('end');
+        }
     })
 
     //Si collision entre ennemis et character game over
@@ -196,7 +189,7 @@ function createObstacles() {
      // ennemi smoke
      var element = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__smoke', // optional,
+        class: 'game__smoke game__enemy', // optional,
         styles: { // optional
           transform: 'translate(900px, 200px)'
         },
@@ -204,33 +197,43 @@ function createObstacles() {
       });
    
 
-   //collision avec la fumée quand elle est active
+   
+   setDeadlySmoke();
+   setInterval(setDeadlySmoke, 6000);
+}
+
+function setDeadlySmoke() {
+    //collision avec la fumée quand elle est active
    var smoke = document.querySelector('.game__smoke');
    var deadlysmoke = document.querySelectorAll('.game__enemy');
 
-   setInterval(function () {
-    smoke.classList.remove('game__enemy');
-    deadlysmoke = document.querySelectorAll('.game__enemy');
-
-
-    setTimeout(function () {
-        smoke.classList.add('game__enemy');
-        deadlysmoke = document.querySelectorAll('.game__enemy');
-        
-        deadlysmoke.forEach(element => {
-            oxo.elements.onCollisionWithElementOnce(character, element, function() {
-                //le niveau est fini
-                console.log('niveau fini');
-                oxo.screens.loadScreen('end');
-            });
-        })
-        }, 1500);
-
-    setTimeout(function () {
+    
         smoke.classList.remove('game__enemy');
         deadlysmoke = document.querySelectorAll('.game__enemy');
+    
+    
+        setTimeout(function () {
+            smoke.classList.add('game__enemy');
+            deadlysmoke = document.querySelectorAll('.game__enemy');
+            
+            deadlysmoke.forEach(element => {
+                oxo.elements.onCollisionWithElementOnce(character, element, function() {
+                    console.log(element);
+                    if (element.classList.contains('game__enemy')) {
+                         //le niveau est fini
+                    console.log('niveau fini');
+                    oxo.screens.loadScreen('end');
+                    }
+                   
+                });
+            })
+            }, 1500);
+    
+        setTimeout(function () {
+            smoke.classList.remove('game__enemy');
+            deadlysmoke = document.querySelectorAll('.game__enemy');
+            
+        }, 4500);
+    
         
-    }, 4500);
-
-}, 6000);
 }
