@@ -1,6 +1,6 @@
 // var character;
-// oxo.screens.loadScreen('game2', function() {
-//     game2();
+// oxo.screens.loadScreen('game', function() {
+//     game();
 // });
 
 
@@ -481,11 +481,3 @@ setInterval(setDeadlySmoke, 6000);
   };
 
 // End Page 
-
-var buttonGame = document.querySelector('.end__button--game');
-
-buttonGame.addEventListener('click', function(){
-  oxo.screens.loadScreen('game', function() {
-    game();
-  })
-});
