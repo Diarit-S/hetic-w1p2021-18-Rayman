@@ -40,15 +40,11 @@
 
 .enemy2{
     transform: translate(1070px, 330px);
-    animation: move2 0.5s infinite alternate linear;
+    animation: move100 0.5s infinite alternate linear;
     
 }
-@include animation-mixin(move2, 1250px, 330px);
+@include animation-mixin(move100, 1250px, 330px);
 
-.enemy3 {
-    // animation: move3 0.5s infinite alternate linear;
-    transform: translate(200px, 300px);
-}
 // @include animation-mixin(move3, 1250px, 330px);
 
 
@@ -123,7 +119,7 @@
     width: 10px;
     height: 10px;
     background-color: aqua;
-    transform: translate(190px, 600px);
+    transform: translate(1090px, 200px);
     position: absolute;
 }
 
@@ -131,7 +127,7 @@
     width: 10px;
     height: 10px;
     background-color: black;
-    transform: translate(190px, 600px);
+    transform: translate(1150px, 600px);
     position: absolute;
 }
 
@@ -139,13 +135,19 @@
     width: 10px;
     height: 10px;
     background-color: red;
-    transform: translate(190px, 600px);
+    transform: translate(140px, 200px);
     position: absolute;
 }
 
 
 //Fin Element-victoire niveau 2
 
+.game__trash {		
+    width: 60px;		
+    height: 60px;		
+     position: absolute;		
+      background-color: green;		
+    }
 
 .game__cap {
     width: 40px;
@@ -191,15 +193,15 @@
 }
 
 .game__smoke {
-    width: 190px;
-    height: 150px;
+    width: 82px;
+    height: 49px;
     background-color: red;
     position: absolute;
 
     &:after {
         content: '';
         display: block;
-        width: 250px;
+        width: 110px;
         height: 200px;
         opacity: 0;
         transform: translate(-20px, -30px);
@@ -221,3 +223,37 @@
   }
 }
 
+
+
+
+//animer ennemis
+
+@include animation-mixin(move3, 0px, 0px);
+
+@include animation-mixin(move31, 262px, 431px);
+@include animation-mixin(move32, 769px, 742px);
+@include animation-mixin(move33, 988px, 419px);
+@include animation-mixin(move2, 1200px, 290px);
+@include animation-mixin(move, 700px, 50px);
+
+
+
+
+
+
+
+
+
+
+
+
+
+//niveau 3
+
+.arc {
+    width: 100vw;
+    height: 100vh;
+    background: url('../medias/champs.jpg');
+    background-size: cover;
+    position: absolute;
+}
