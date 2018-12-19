@@ -1,15 +1,16 @@
+var character;
 oxo.screens.loadScreen('game', function() {
     game();
     
 });
-
+//1er niveau
 function game() {
     
     //creation des obstacles: bus, crs, tank etc
     createObstacles();
     
     //initialisation des variables
-    var character = document.getElementById('character');
+    character = document.getElementById('character');
     var finishline = document.getElementById('finishline');
     var obstacles = document.querySelectorAll('.game__obstacle');
     var yellowjacket = document.getElementById('yellowjacket');
@@ -39,12 +40,15 @@ function game() {
         cap.classList.add('invisible');
         document.querySelector('.game__score--cap').innerText = "Bonnet : " + scorecap + "/1";
     });
-
-    oxo.elements.onCollisionWithElement(character,finishline, function(){
-        if( scorecap == 1 && scorejacket == 1) {
-            oxo.screens.loadScreen('end');
-        }
-    })
+    
+   //Si collision entre character et ligne d'arrivée
+   oxo.elements.onCollisionWithElement(character,finishline, function(){
+    if ( scorecap == 1 && scorejacket == 1){
+      oxo.screens.loadScreen('game2', function(){
+        game2();
+      });
+    };
+});
 
     //Si collision entre ennemis et character game over
     enemies.forEach(element => {
@@ -56,15 +60,18 @@ function game() {
     })
 
 };
-
+// creation elements niveau 1
 function createObstacles() {
    
 //canon a eau
       var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__tank', // optional,
-        obstacle: true, // optional,
-        appendTo: 'body' // optional
+        obstacle: true,// optional,
+        appendTo: 'body', // optional
+        styles: { // optional
+            transform: 'translate(10px, 300px)'
+          },
       });
 
       var element = oxo.elements.createElement({
@@ -79,7 +86,7 @@ function createObstacles() {
         class: 'game__obstacle', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(470px, 80px)'
+          transform: 'translate(470px, 116px)'
         },
         appendTo: 'body' // optional
       });
@@ -89,7 +96,7 @@ function createObstacles() {
         class: 'game__obstacle', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(470px, 310px)'
+          transform: 'translate(470px, 347px)'
         },
         appendTo: 'body' // optional
       });
@@ -99,7 +106,7 @@ function createObstacles() {
         class: 'game__obstacle', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(470px, 540px)'
+          transform: 'translate(470px, 578px)'
         },
         appendTo: 'body' // optional
       });
@@ -128,7 +135,7 @@ function createObstacles() {
         class: 'game__barriere', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(10px, 20px)'
+          transform: 'translate(10px, 63px)'
         },
         appendTo: 'body' // optional
       });
@@ -139,7 +146,7 @@ function createObstacles() {
         class: 'game__barriere', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(430px, 20px)'
+          transform: 'translate(430px, 63px)'
         },
         appendTo: 'body' // optional
       });
@@ -149,7 +156,7 @@ function createObstacles() {
         class: 'game__barriere', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(640px, 20px)'
+          transform: 'translate(640px, 63px)'
         },
         appendTo: 'body' // optional
       });
@@ -159,7 +166,7 @@ function createObstacles() {
         class: 'game__barriere', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(855px, 20px)'
+          transform: 'translate(855px, 63px)'
         },
         appendTo: 'body' // optional
       });
@@ -169,7 +176,7 @@ function createObstacles() {
         class: 'game__barriere', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(1065px, 20px)'
+          transform: 'translate(1065px, 63px)'
         },
         appendTo: 'body' // optional
       });
