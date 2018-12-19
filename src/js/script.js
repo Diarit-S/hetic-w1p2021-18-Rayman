@@ -40,7 +40,7 @@ function game() {
         document.querySelector('.game__score--cap').innerText = "Bonnet : " + scorecap + "/1";
     });
 
-    oxo.elements.onCollisionWithElementOnce(character,finishline, function(){
+    oxo.elements.onCollisionWithElement(character,finishline, function(){
         if( scorecap == 1 && scorejacket == 1) {
             oxo.screens.loadScreen('end');
         }
