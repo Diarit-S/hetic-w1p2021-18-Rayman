@@ -15,7 +15,7 @@ function game() {
     
     //initialisation des variables
     character = document.querySelector('.game__character');
-    var finishline = document.getElementById('finishline');
+    var finishline = document.querySelector('.game__finishline');
     var obstacles = document.querySelectorAll('.game__obstacle');
     var yellowjacket = document.getElementById('yellowjacket');
     var water = document.querySelector('.water');
@@ -45,6 +45,15 @@ function game() {
         document.querySelector('.game__score--cap').innerText = "Bonnet : " + scorecap + "/1";
     });
     
+    // Si tous les objets récoltés
+    setInterval(function(){
+        if ( scorecap == 1 && scorejacket == 1){
+            finishline.classList.remove('game__barriere');
+            console.log("okkkkk");
+             };
+    }, 500)
+  
+
    //Si collision entre character et ligne d'arrivée
    oxo.elements.onCollisionWithElement(character,finishline, function(){
     if ( scorecap == 1 && scorejacket == 1){
@@ -155,29 +164,28 @@ function createObstacles() {
         appendTo: 'body' // optional
     });
 
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__obstacle', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+          transform: 'translate(780px, 0px)'
+        },
+        appendTo: 'body' // optional
+      });
+
 //Barrière 
-    
-
-
       var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__barriere', // optional,
         obstacle: true, // optional,
         styles: { // optional
-          transform: 'translate(430px, 63px)'
+          transform: 'translate(660px, 100px) rotate(90deg)'
         },
         appendTo: 'body' // optional
       });
 
-      var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-          transform: 'translate(640px, 63px)'
-        },
-        appendTo: 'body' // optional
-      });
+      
 
       var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -201,15 +209,24 @@ function createObstacles() {
 //Ennemi/crs
       var element = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__enemy crs', // optional,
+        class: 'game__enemy enemy1 crs', // optional,
+        appendTo: 'body' // optional
+      });
+
+      
+
+      var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__enemy enemy2 crs', // optional,
         appendTo: 'body' // optional
       });
 
       var element = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__enemy ennemy2 crs', // optional,
+        class: 'game__enemy enemy3 crs', // optional,
         appendTo: 'body' // optional
       });
+    
 
 //      // ennemi smoke
 //      var element = oxo.elements.createElement({

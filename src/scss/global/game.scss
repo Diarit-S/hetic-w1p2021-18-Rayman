@@ -21,26 +21,38 @@
     transform: translate(640px, 700px);
     position: absolute;
 }
+.crs {
+    background-image: url('../medias/casque-crs.svg');
+}
 
 .game__enemy {
     width: 40px;
     height: 40px;
     position: absolute;
-    transform: translate(1070px, 500px);
-    animation: moves 0.5s infinite alternate linear;
-}
-@include animation-mixin(moves, 1250px, 500px);
-
-.crs {
-    background-image: url('../medias/casque-crs.svg');
-}
-
-.ennemy2{
-    animation: move 0.6s infinite alternate linear;
-    transform: translate(1070px, 330px)
     
 }
-@include animation-mixin(move, 1250px, 330px);
+
+.enemy1 {
+    transform: translate(1250px, 500px);
+    animation: move1 0.5s infinite alternate linear;
+}
+@include animation-mixin(move1, 1070px, 500px);
+
+.enemy2{
+    transform: translate(1070px, 330px);
+    animation: move2 0.5s infinite alternate linear;
+    
+}
+@include animation-mixin(move2, 1250px, 330px);
+
+.enemy3 {
+    // animation: move3 0.5s infinite alternate linear;
+    transform: translate(200px, 300px);
+}
+// @include animation-mixin(move3, 1250px, 330px);
+
+
+
 
 .game__obstacle {
     width: 68px;
@@ -54,9 +66,8 @@
 .game__finishline {
     width: 200px;
     height: 20px;
-    background-color:yellow; 
     position: absolute;
-    transform: translate(220px, 82px);
+    transform: translate(550px, 200px);
 }
 
 .game__yellowjacket {
@@ -106,6 +117,7 @@
 }
 
 
+
 //Element-victoire niveau 2
 .game__megaphone {
     width: 10px;
@@ -145,7 +157,7 @@
 .game__barriere {
     width: 200px;
     height: 20px;
-    background-image: url('../medias/barriere.svg');
+    background-image: url('../medias/barriere-blanche.svg');
     // background-color:black; 
     position: absolute;
 }
