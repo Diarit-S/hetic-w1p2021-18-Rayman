@@ -29,7 +29,6 @@
     width: 40px;
     height: 40px;
     position: absolute;
-    
 }
 
 .enemy1 {
@@ -40,12 +39,21 @@
 
 .enemy2{
     transform: translate(1070px, 330px);
-    animation: move100 0.5s infinite alternate linear;
-    
+    animation: move2 0.5s infinite alternate linear;
 }
-@include animation-mixin(move100, 1250px, 330px);
+@include animation-mixin(move2, 1250px, 330px);
 
-// @include animation-mixin(move3, 1250px, 330px);
+.enemy3{
+    transform: translate(800px, 220px);
+    animation: move3 0.6s infinite alternate linear;
+}
+@include animation-mixin(move3, 545px, 220px);
+
+.enemy4{
+    transform: translate(950px, 335px);
+    animation: move4 0.5s infinite alternate linear;
+}
+@include animation-mixin(move4, 850px, 335px);
 
 
 
@@ -140,6 +148,36 @@
 }
 
 
+
+.enemy5{
+    transform: translate(950px, 335px);
+    animation: move5 0.5s infinite alternate linear;
+}
+@include animation-mixin(move5, 950px, 300px);
+
+.enemy6{
+    transform: translate(950px, 335px);
+    animation: move6 0.5s infinite alternate linear;
+}
+@include animation-mixin(move6, 950px, 300px);
+
+
+
+
+.enemy7{
+    transform: translate(30px, 100px);
+    animation: move7 2s infinite alternate linear;
+}
+@include animation-mixin(move7, 30px, 300px);
+
+
+.enemy7{
+    transform: translate(30px, 100px);
+    animation: move7 2s infinite alternate linear;
+}
+@include animation-mixin(move7, 30px, 300px);
+
+
 //Fin Element-victoire niveau 2
 
 .game__trash {		
@@ -228,12 +266,12 @@
 
 //animer ennemis
 
-@include animation-mixin(move3, 0px, 0px);
+@include animation-mixin(move83, 0px, 0px);
 
 @include animation-mixin(move31, 262px, 431px);
 @include animation-mixin(move32, 769px, 742px);
 @include animation-mixin(move33, 988px, 419px);
-@include animation-mixin(move2, 1200px, 290px);
+@include animation-mixin(move89, 1200px, 290px);
 @include animation-mixin(move, 700px, 50px);
 
 

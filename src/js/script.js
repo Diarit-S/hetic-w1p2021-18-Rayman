@@ -1,7 +1,6 @@
-
 var character;
-oxo.screens.loadScreen('game3', function() {
-    game3();
+oxo.screens.loadScreen('game', function() {
+    game();
     
 });
 
@@ -86,23 +85,7 @@ function createObstacles() {
     },
     appendTo: 'body' // optional
   });
-// //canon a eau
-//       var element = oxo.elements.createElement({
-//         type: 'div', // optional
-//         class: 'game__tank', // optional,
-//         obstacle: true,// optional,
-//         appendTo: '', // optional
-//         styles: { // optional
-//             transform: 'translate(10px, 300px)'
-//           },
-//       });
 
-//       var element = oxo.elements.createElement({
-//         type: 'div', // optional
-//         class: 'water game__enemy', // optional,
-        
-//         appendTo: 'div.game__tank' // optional
-//       });
 // bus/voiture
       var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -175,6 +158,27 @@ function createObstacles() {
         appendTo: 'body' // optional
       });
 
+      var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__obstacle', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+          transform: 'translate(700px, 250px) rotate(270deg)'
+        },
+        appendTo: 'body' // optional
+      });
+
+//poubelles
+var element = oxo.elements.createElement({
+          type: 'div', // optional
+          class: 'game__trash', // optional,
+          obstacle: true, // optional,
+          styles: { // optional
+            transform: 'translate(550px, 335px) '
+          },
+          appendTo: 'body' // optional
+        });
+
 //Barrière 
       var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -207,6 +211,8 @@ function createObstacles() {
         },
         appendTo: 'body' // optional
       });
+
+
 //Ennemi/crs
       var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -223,13 +229,19 @@ function createObstacles() {
 
       var element = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__enemy crs',
-        styles: {
-            transform: 'translate(700px, 200px)',
-            animation: 'move3 4s infinite alternate linear' // optional,
-         }, 
+        class: 'game__enemy enemy3 crs',
+        // styles: {
+        //     transform: 'translate(700px, 200px)',
+        //     animation: 'move3 4s infinite alternate linear' // optional,
+        //  }, 
       appendTo: 'body' // optional);
     });
+
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__enemy enemy4 crs', // optional,
+        appendTo: 'body' // optional
+      });
     
 
 //      // ennemi smoke
@@ -519,7 +531,88 @@ function setDeadlySmoke() {
 // setInterval(setDeadlySmoke, 6000);
 //   };
 
-// // End Page 
+// 
+
+// End Page 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Fonction niveau 2
@@ -758,25 +851,25 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       },
       appendTo: 'body' // optional
     });
+
   //Ennemi/crs
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__enemy crs', // optional,
-      styles: { // optional
-        transform: 'translate(30px, 100px)'
-      },
-      appendTo: 'body' // optional
-    });
+    
   
     var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy ennemy2 crs', // optional,
+      class: 'game__enemy ennemy5 crs', // optional,
       appendTo: 'body' // optional
     });
 
     var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__enemy enemy6 crs', // optional,
+        appendTo: 'body' // optional
+      });
+
+    var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy crs', // optional,
+      class: 'game__enemy enemy7 crs', // optional,
       styles: { // optional
         transform: 'translate(30px, 500px)'
       },
@@ -785,7 +878,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
 
     var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy crs', // optional,
+      class: 'game__enemy enemy8 crs', // optional,
       styles: { // optional
         transform: 'translate(568px, 500px)'
       },
@@ -794,7 +887,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
 
     var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy crs', // optional,
+      class: 'game__enemy enemy9 crs', // optional,
       styles: { // optional
         transform: 'translate(950px, 640px)'
       },
@@ -803,7 +896,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
 
     var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy crs', // optional,
+      class: 'game__enemy enemy10 crs', // optional,
       styles: { // optional
         transform: 'translate(1000px, 100px)'
       },
@@ -812,7 +905,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
 
     var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy crs', // optional,
+      class: 'game__enemy enemy11 crs', // optional,
       styles: { // optional
         transform: 'translate(490px, 500px)'
       },
@@ -821,7 +914,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
 
     var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy crs', // optional,
+      class: 'game__enemy enemy12 crs', // optional,
       styles: { // optional
         transform: 'translate(400px, 500px)'
       },
@@ -831,7 +924,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
 
     var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy crs', // optional,
+      class: 'game__enemy enemy13 crs', // optional,
       styles: { // optional
         transform: 'translate(240px, 600px)'
       },
