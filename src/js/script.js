@@ -183,13 +183,13 @@ function createObstacles() {
 //Ennemi/crs
       var element = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__enemy', // optional,
+        class: 'game__enemy crs', // optional,
         appendTo: 'body' // optional
       });
 
       var element = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__enemy ennemy2', // optional,
+        class: 'game__enemy ennemy2 crs', // optional,
         appendTo: 'body' // optional
       });
 

@@ -24,13 +24,17 @@
 }
 
 .game__enemy {
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    width: 30px;
+    height: 30px;
+    background-color: white;
     position: absolute;
     transform: translate(450px, 50px);
     animation: moves 2s infinite alternate linear;
      
+}
+
+.crs {
+    background-image: url('../medias/casque-crs.svg');
 }
 
 .ennemy2{
