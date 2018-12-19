@@ -2,34 +2,40 @@
    
 
     to {
-        transform: translate(1200px,290px);
+        transform: translate(1250px,330px);
     }
 }
 
 @keyframes moves {
    
     to {
-        transform: translate(700px,84px);
+        transform: translate(1250px,500px);
     }
 }
 
+.bastille {
+    width: 1280px;
+    height: 800px;
+    background-size: cover;
+    background-image: url('../medias/bastille.jpg');
+    position: absolute;
 
+}
 
 .game__character {
     width: 20px;
     height: 20px;
-    background-color: white;
     background-image: url('../medias/gilet.svg');
-    transform: translate(640px, 700px);
+    transform: translate(640px, 600px);
+    position: absolute;
 }
 
 .game__enemy {
-    width: 30px;
-    height: 30px;
-    background-color: white;
+    width: 40px;
+    height: 40px;
     position: absolute;
-    transform: translate(450px, 84px);
-    animation: moves 2s infinite alternate linear;
+    transform: translate(1070px, 500px);
+    animation: moves 0.5s infinite alternate linear;
 }
 
 .crs {
@@ -37,8 +43,8 @@
 }
 
 .ennemy2{
-    animation: moves2 2s infinite alternate linear;
-    transform: translate(888px, 290px)
+    animation: moves2 0.6s infinite alternate linear;
+    transform: translate(1070px, 330px)
 }
 
 
@@ -65,7 +71,7 @@
     height: 30px;
     background-color: white;
     background-image: url('../medias/gilet.svg');
-    transform: translate(220px, 600px);
+    transform: translate(1200px, 400px);
     position: absolute;
 }
 
