@@ -1,9 +1,22 @@
 var character;
+
 oxo.screens.loadScreen('game', function() {
     game();
     
 });
 
+
+// //lancer le jeu depuis la home 
+// var play = document.getElementById('homeplay');
+// console.log(play);
+
+// play.addEventListener('click', function(){
+//     oxo.screens.loadScreen('game', function() {
+//         game();
+//         console.log('chargé');
+        
+//     });
+// });
 
 
 
@@ -23,6 +36,7 @@ function game() {
     var cap = document.getElementById('cap');
     var scorejacket = 0;
     var scorecap = 0;
+    var falsebarier = document.querySelector('.false__barier');
     
 
     //bouger character avec les keys directionnelles
@@ -49,7 +63,8 @@ function game() {
     setInterval(function(){
         if ( scorecap == 1 && scorejacket == 1){
             finishline.classList.remove('game__barriere');
-            console.log("okkkkk");
+            falsebarier.classList.add('is-open');
+            
              };
     }, 500)
   
@@ -68,7 +83,7 @@ function game() {
         oxo.elements.onCollisionWithElementOnce(character, element, function() {
             //le niveau est fini
             console.log('niveau fini');
-            oxo.screens.loadScreen('end');
+            oxo.screens.loadScreen('lost');
         });
     })
 
@@ -85,6 +100,18 @@ function createObstacles() {
     },
     appendTo: 'body' // optional
   });
+
+  //finishline 
+  var element = oxo.elements.createElement({
+    type: 'div', // optional
+    class: 'game__barriere game__finishline', // optional,
+    obstacle: false, // optional,
+    styles: { // optional
+      transform: 'translate(550px, 200px)'
+    },
+    appendTo: 'body' // optional
+  });
+
 
 // bus/voiture
       var element = oxo.elements.createElement({
@@ -178,6 +205,16 @@ var element = oxo.elements.createElement({
           },
           appendTo: 'body' // optional
         });
+// fausse barrière
+var element = oxo.elements.createElement({
+    type: 'div', // optional
+    class: 'false__barier game__barriere', // optional,
+    obstacle: true, // optional,
+    styles: { // optional
+      transform: 'translate(550px, 200px)'
+    },
+    appendTo: 'body' // optional
+  });
 
 //Barrière 
       var element = oxo.elements.createElement({
@@ -280,7 +317,7 @@ function setDeadlySmoke() {
                     if (element.classList.contains('game__enemy--smoke')) {
                          //le niveau est fini
                     console.log('niveau fini');
-                    oxo.screens.loadScreen('end');
+                    oxo.screens.loadScreen('lost');
                     }
                    
                 });
@@ -369,7 +406,7 @@ function setDeadlySmoke() {
 //         oxo.elements.onCollisionWithElementOnce(character, element, function() {
 //             //le niveau est fini
 //             console.log('niveau fini');
-//             oxo.screens.loadScreen('end');
+//             oxo.screens.loadScreen('lost');
 //         });
 //     })
   
@@ -698,7 +735,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
         oxo.elements.onCollisionWithElementOnce(character, element, function() {
             //le niveau est fini
             console.log('niveau fini');
-            oxo.screens.loadScreen('end');
+            oxo.screens.loadScreen('lost');
         });
     })
   
@@ -1118,290 +1155,290 @@ var element = oxo.elements.createElement({
 
 
 
-  function game3() {
-    createElements3();
+//   function game3() {
+//     createElements3();
     
     
     
     
-    var character = document.querySelector('.game__character');
-    var water = document.querySelector('.water');
-    var enemies = document.querySelectorAll('.game__enemy');
-    var obstacles = document.querySelectorAll('.game__obstacle');
-    oxo.animation.moveElementWithArrowKeys(character, 30);}
+//     var character = document.querySelector('.game__character');
+//     var water = document.querySelector('.water');
+//     var enemies = document.querySelectorAll('.game__enemy');
+//     var obstacles = document.querySelectorAll('.game__obstacle');
+//     oxo.animation.moveElementWithArrowKeys(character, 30);}
 
 
 
 
-  function createElements3(){
-    //character
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__character', // optional,
-      obstacle: false,
-      styles : {
-        transform: 'translate(100px, 750px)'
-      },
-      appendTo: 'body' // optional
-    });
+//   function createElements3(){
+//     //character
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__character', // optional,
+//       obstacle: false,
+//       styles : {
+//         transform: 'translate(100px, 750px)'
+//       },
+//       appendTo: 'body' // optional
+//     });
   
-    //tank
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__tank', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(238px, 464px) rotate(180deg)'
-      },
-      appendTo: 'body' // optional
-    });
+//     //tank
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__tank', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(238px, 464px) rotate(180deg)'
+//       },
+//       appendTo: 'body' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'water game__enemy', // optional,
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'water game__enemy', // optional,
       
-      appendTo: 'div.game__tank' // optional
-    });
+//       appendTo: 'div.game__tank' // optional
+//     });
   
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__tank third', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(1068px, 171px) rotate(-90deg) scaleX(-1)'
-      },
-      appendTo: 'body' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__tank third', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(1068px, 171px) rotate(-90deg) scaleX(-1)'
+//       },
+//       appendTo: 'body' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'water game__enemy',
-      appendTo: '.third' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'water game__enemy',
+//       appendTo: '.third' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__tank second', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(632px, 404px) rotate(180deg)'
-      },
-      appendTo: 'body' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__tank second', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(632px, 404px) rotate(180deg)'
+//       },
+//       appendTo: 'body' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'water game__enemy',
-      appendTo: '.second' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'water game__enemy',
+//       appendTo: '.second' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__tank fourth', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(754px, 176px) rotate(180deg)'
-      },
-      appendTo: 'body' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__tank fourth', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(754px, 176px) rotate(180deg)'
+//       },
+//       appendTo: 'body' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'water game__enemy',
-      appendTo: '.fourth' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'water game__enemy',
+//       appendTo: '.fourth' // optional
+//     });
   
-    //bus/voitures
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(161px, 668px)'
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(84px, 263px) rotate(90deg)'
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(448px, 253px) rotate(90deg)'
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(978px, 676px)',
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(1113px, 518px) rotate(90deg)',
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle', // optional,
-      obstacle: true,
-      styles : {
-        transform: 'translate(918px, 391px) rotate(90deg)',
-      },
-      appendTo: 'body' // optional
-    });
-    //crs
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__enemy crs',
-      styles: {
-        transform: 'translate(262px, 369px)',
-        animation: 'move31 0.8s infinite alternate linear'
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__enemy crs',
-      styles: {
-        transform: 'translate(769px, 665px)',
-        animation: 'move32 0.5s infinite alternate linear'
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__enemy crs',
-      styles: {
-        transform: 'translate(988px, 177px)',
-        animation: 'move33 0.4s infinite alternate linear'
-      },
-      appendTo: 'body' // optional
-    });
-    //poubelles
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle--trash',
-      obstacle: true,
-      styles: {
-        transform: 'translate(319px, 365px)',
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle--trash',
-      obstacle: true,
-      styles: {
-        transform: 'translate(606px, 359px)',
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle--trash',
-      obstacle: true,
-      styles: {
-        transform: 'translate(767px, 618px)',
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle--trash',
-      obstacle: true,
-      styles: {
-        transform: 'translate(245px, 324px)',
-      },
-      appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__obstacle--trash',
-      obstacle: true,
-      styles: {
-        transform: 'translate(295px, 320px)',
-      },
-      appendTo: 'body' // optional
-    });
-    //barriere
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__barriere', // optional,
-      obstacle: true, // optional,
-      styles: { // optional
-        transform: 'translate(10px, 138px)'
-      },
-      appendTo: 'body' // optional
-    });
+//     //bus/voitures
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(161px, 668px)'
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(84px, 263px) rotate(90deg)'
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(448px, 253px) rotate(90deg)'
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(978px, 676px)',
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(1113px, 518px) rotate(90deg)',
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle', // optional,
+//       obstacle: true,
+//       styles : {
+//         transform: 'translate(918px, 391px) rotate(90deg)',
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     //crs
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__enemy crs',
+//       styles: {
+//         transform: 'translate(262px, 369px)',
+//         animation: 'move31 0.8s infinite alternate linear'
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__enemy crs',
+//       styles: {
+//         transform: 'translate(769px, 665px)',
+//         animation: 'move32 0.5s infinite alternate linear'
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__enemy crs',
+//       styles: {
+//         transform: 'translate(988px, 177px)',
+//         animation: 'move33 0.4s infinite alternate linear'
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     //poubelles
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle--trash',
+//       obstacle: true,
+//       styles: {
+//         transform: 'translate(319px, 365px)',
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle--trash',
+//       obstacle: true,
+//       styles: {
+//         transform: 'translate(606px, 359px)',
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle--trash',
+//       obstacle: true,
+//       styles: {
+//         transform: 'translate(767px, 618px)',
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle--trash',
+//       obstacle: true,
+//       styles: {
+//         transform: 'translate(245px, 324px)',
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__obstacle--trash',
+//       obstacle: true,
+//       styles: {
+//         transform: 'translate(295px, 320px)',
+//       },
+//       appendTo: 'body' // optional
+//     });
+//     //barriere
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__barriere', // optional,
+//       obstacle: true, // optional,
+//       styles: { // optional
+//         transform: 'translate(10px, 138px)'
+//       },
+//       appendTo: 'body' // optional
+//     });
   
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__finishline', // optional,
-      obstacle: false, // optional,
-      styles: { // optional
-        transform: 'translate(220px, 138px)'
-      },
-      appendTo: 'body' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__finishline', // optional,
+//       obstacle: false, // optional,
+//       styles: { // optional
+//         transform: 'translate(220px, 138px)'
+//       },
+//       appendTo: 'body' // optional
+//     });
     
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__barriere', // optional,
-      obstacle: true, // optional,
-      styles: { // optional
-        transform: 'translate(430px, 138px)'
-      },
-      appendTo: 'body' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__barriere', // optional,
+//       obstacle: true, // optional,
+//       styles: { // optional
+//         transform: 'translate(430px, 138px)'
+//       },
+//       appendTo: 'body' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__barriere', // optional,
-      obstacle: true, // optional,
-      styles: { // optional
-        transform: 'translate(640px, 138px)'
-      },
-      appendTo: 'body' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__barriere', // optional,
+//       obstacle: true, // optional,
+//       styles: { // optional
+//         transform: 'translate(640px, 138px)'
+//       },
+//       appendTo: 'body' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__barriere', // optional,
-      obstacle: true, // optional,
-      styles: { // optional
-        transform: 'translate(855px, 138px)'
-      },
-      appendTo: 'body' // optional
-    });
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__barriere', // optional,
+//       obstacle: true, // optional,
+//       styles: { // optional
+//         transform: 'translate(855px, 138px)'
+//       },
+//       appendTo: 'body' // optional
+//     });
     
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__barriere', // optional,
-      obstacle: true, // optional,
-      styles: { // optional
-        transform: 'translate(1065px, 138px)'
-      },
-      appendTo: 'body' // optional
-    });
-  }
+//     var element = oxo.elements.createElement({
+//       type: 'div', // optional
+//       class: 'game__barriere', // optional,
+//       obstacle: true, // optional,
+//       styles: { // optional
+//         transform: 'translate(1065px, 138px)'
+//       },
+//       appendTo: 'body' // optional
+//     });
+//   }
 
 
 

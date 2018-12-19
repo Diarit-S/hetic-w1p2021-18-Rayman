@@ -61,7 +61,6 @@
 .game__obstacle {
     width: 68px;
     height: 220px;
-    background-color:white;
     background-image: url('../medias/bus-vertical.svg');
     background-repeat: no-repeat;
     position: absolute;
@@ -71,7 +70,6 @@
     width: 200px;
     height: 20px;
     position: absolute;
-    transform: translate(550px, 200px);
 }
 
 .game__yellowjacket {
@@ -105,15 +103,18 @@
 
 .game__score--jacket{
     position: absolute;
-    transform: translate(120px , 34px);
+    transform: translate(120px , 5px);
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-family: 'obelixpro';
+
 }
 .game__score--cap {
     position: absolute;
-    transform: translate(120px , 5px);
+    transform: translate(120px , 34px);
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-family: 'obelixpro';
 }
 
 .invisible {
@@ -123,26 +124,34 @@
 
 
 //Element-victoire niveau 2
+
+.champs {
+    width: 1280px;
+    height: 800px;
+    background-size: cover;
+    background-image: url('../medias/champs.jpg');
+    position: absolute;
+}
 .game__megaphone {
-    width: 10px;
-    height: 10px;
-    background-color: aqua;
+    width: 40px;
+    height: 40px;
+    background-image: url('../medias/megaphone.svg');
     transform: translate(1090px, 200px);
     position: absolute;
 }
 
 .game__cone {
-    width: 10px;
-    height: 10px;
-    background-color: black;
+    width: 40px;
+    height: 40px;
+    background-image: url('../medias/cone.svg');
     transform: translate(1150px, 600px);
     position: absolute;
 }
 
 .game__sign {
-    width: 10px;
-    height: 10px;
-    background-color: red;
+    width: 40px;
+    height: 40px;
+    background-image: url('../medias/placard.svg');
     transform: translate(140px, 200px);
     position: absolute;
 }
@@ -181,10 +190,10 @@
 //Fin Element-victoire niveau 2
 
 .game__trash {		
-    width: 60px;		
+    width: 65px;		
     height: 60px;		
      position: absolute;		
-      background-color: green;		
+      background-image: url('../medias/trash.svg');	
     }
 
 .game__cap {
@@ -194,6 +203,8 @@
     transform: translate(655px, 420px);
     position: absolute;
 }
+
+
 .game__barriere {
     width: 200px;
     height: 20px;
@@ -201,6 +212,10 @@
     // background-color:black; 
     position: absolute;
 }
+.is-open {
+    display: none;
+}
+
 .game__tank {
     width : 200px;
     height: 200px;
