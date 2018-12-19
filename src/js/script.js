@@ -4,6 +4,9 @@ oxo.screens.loadScreen('game', function() {
     
 });
 
+
+
+
 //1er niveau
 function game() {
     
@@ -11,7 +14,7 @@ function game() {
     createObstacles();
     
     //initialisation des variables
-    character = document.getElementById('character');
+    character = document.querySelector('.game__character');
     var finishline = document.getElementById('finishline');
     var obstacles = document.querySelectorAll('.game__obstacle');
     var yellowjacket = document.getElementById('yellowjacket');
@@ -23,7 +26,7 @@ function game() {
     
 
     //bouger character avec les keys directionnelles
-    oxo.animation.moveElementWithArrowKeys(character, 30);
+    oxo.animation.moveElementWithArrowKeys(character, 150);
 
     //Si collision avec le gilet jaune
     oxo.elements.onCollisionWithElementOnce(character, yellowjacket, function() {
@@ -63,7 +66,16 @@ function game() {
 };
 // creation elements niveau 1
 function createObstacles() {
-   
+   //Personnage principal
+   var element = oxo.elements.createElement({
+    type: 'div', // optional
+    class: 'game__character', // optional,
+    obstacle: false, // optional,
+    styles: { // optional
+      transform: 'translate(640px, 600px)'
+    },
+    appendTo: 'body' // optional
+  });
 // //canon a eau
 //       var element = oxo.elements.createElement({
 //         type: 'div', // optional
@@ -144,15 +156,7 @@ function createObstacles() {
     });
 
 //Barrière 
-      var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-          transform: 'translate(10px, 63px)'
-        },
-        appendTo: 'body' // optional
-      });
+    
 
 
       var element = oxo.elements.createElement({
@@ -491,3 +495,13 @@ var element = oxo.elements.createElement({
 setDeadlySmoke();
 setInterval(setDeadlySmoke, 6000);
   };
+
+// End Page 
+
+var buttonGame = document.querySelector('.end__button--game');
+
+buttonGame.addEventListener('click', function(){
+  oxo.screens.loadScreen('game', function() {
+    game();
+  })
+});
