@@ -13,9 +13,7 @@
     }
 }
 
-* {
-background-color: grey;
-}
+
 
 .game__character {
     width: 20px;
@@ -184,7 +182,6 @@ background-color: grey;
     width: 190px;
     height: 150px;
     background-color: red;
-    transform: translate(900px, 200px);
     position: absolute;
 
     &:after {

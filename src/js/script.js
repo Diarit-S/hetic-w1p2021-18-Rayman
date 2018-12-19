@@ -3,6 +3,7 @@ oxo.screens.loadScreen('game2', function() {
     game2();
     
 });
+
 //1er niveau
 function game() {
     
@@ -261,9 +262,10 @@ function setDeadlySmoke() {
 
 //Fonction niveau 2
 function game2() {
+ 
     //creation des obstacles: bus, crs, tank etc
   
-    createObstacles2();
+   createObstacles2();
   
     //initialisation des variables
     character = document.querySelector('.game__character');
@@ -278,8 +280,10 @@ function game2() {
     var scoremegaphone = 0;
     var scoresign = 0;
     
-    //bouger character avec les keys directionnelles
-    oxo.animation.moveElementWithArrowKeys(character, 30);
+     //bouger character avec les keys directionnelles
+    oxo.animation.moveElementWithArrowKeys(character, 30);  
+
+    
   
     //Si collision entre character et ligne d'arrivée
     oxo.elements.onCollisionWithElement(character,finishline, function(){
@@ -328,7 +332,7 @@ function game2() {
     var element = oxo.elements.createElement({
       type: 'div', // optional
       class: 'game__character', // optional,
-      obstacle: true, // optional,
+      obstacle: false, // optional,
       styles: { // optional
         transform: 'translate(200px, 500px)'
       },
