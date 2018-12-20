@@ -1,23 +1,13 @@
 var character;
 
-// oxo.screens.loadScreen('game2', function() {
-//     game2();
-
-// });
-
-
 setTimeout(() => {
     var playBtn = document.querySelector('.home__play');
     playBtn.addEventListener('click', function () {
-        console.log("jhebfbdbhf")
         oxo.screens.loadScreen('game', function () {
             game();
         })
     })
 }, 100);
-
-
-
 
 document.addEventListener('keypress', (event) => {
     if (event.key == "a") {
@@ -35,15 +25,16 @@ document.addEventListener('keypress', (event) => {
             game3();
         });
     };
-
-
 });
 
 
+oxo.inputs.listenKey('enter', function() {
+    oxo.screens.loadScreen('game', function(){
+        game();
+    })
+  });
 
-
-
-//1er niveau
+//level 1
 function game() {
 
     //creation des obstacles: bus, crs, tank etc
@@ -118,7 +109,7 @@ function game() {
 // creation elements niveau 1
 function createObstacles() {
     //Personnage principal
-    var element = oxo.elements.createElement({
+    var charater = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__character', // optional,
         obstacle: false, // optional,
@@ -140,98 +131,21 @@ function createObstacles() {
     });
 
 
-    // bus/voiture
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(470px, 116px)'
-        },
-        appendTo: 'body' // optional
-    });
+    // bus
+    createBus(470, 116, 0);
+    createBus(470, 347, 0);
+    createBus(470, 578, 0);
+    createBus(626, 400, 90);
+    createBus(850, 400, 90);
+    createBus(1000, 325, 0);
+    createBus(780, 0, 0);
+    createBus(700, 250, 270);
 
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(470px, 347px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(470px, 578px) '
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(626px, 400px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(850px, 400px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-
-
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(1000px, 325px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(780px, 0px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(700px, 250px) rotate(270deg)'
-        },
-        appendTo: 'body' // optional
-    });
 
     //poubelles
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(550px, 335px) '
-        },
-        appendTo: 'body' // optional
-    });
+    createTrash(550, 335);
+
+
     // fausse barrière
     var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -244,139 +158,20 @@ function createObstacles() {
     });
 
     //Barrière 
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(660px, 100px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-    });
-
-
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(855px, 63px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(1065px, 63px)'
-        },
-        appendTo: 'body' // optional
-    });
-
+    createBarriere(660, 100, 90);
+    createBarriere(855, 63, 0);
+    createBarriere(1065, 63, 0);
+    
 
     //Ennemi/crs
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy1 crs', // optional,
-        appendTo: 'body' // optional
-    });
-
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy2 crs', // optional,
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy3 crs',
-        // styles: {
-        //     transform: 'translate(700px, 200px)',
-        //     animation: 'move3 4s infinite alternate linear' // optional,
-        //  }, 
-        appendTo: 'body' // optional);
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy4 crs', // optional,
-        appendTo: 'body' // optional
-    });
-
-
-    //      // ennemi smoke
-    //      var element = oxo.elements.createElement({
-    //         type: 'div', // optional
-    //         class: 'game__smoke game__enemy--smoke', // optional,
-    //         styles: { // optional
-    //           transform: 'translate(900px, 200px)'
-    //         },
-    //         appendTo: 'body' // optional
-    //       });
-
-
-
-    //    setDeadlySmoke();
-    //    setInterval(setDeadlySmoke, 6000);
+    createCrs(1250, 500, 'move1', 0.5);
+    createCrs(1250, 330, 'move2', 0.5);
+    createCrs(700, 220, 'move3', 0.5);
+    createCrs(950, 335, 'move4', 0.5);
 
 
 
 }
-
-
-
-
-//   function setDeadlySmoke() {
-//     //collision avec la fumée quand elle est active
-//     var smoke = document.querySelector('.game__smoke');
-//     var deadlysmoke = document.querySelectorAll('.game__enemy--smoke');
-
-
-//     smoke.classList.remove('game__enemy--smoke');
-//     deadlysmoke = document.querySelectorAll('.game__enemy--smoke');
-
-
-//     setTimeout(function () {
-//       smoke.classList.add('game__enemy--smoke');
-//       deadlysmoke = document.querySelectorAll('.game__enemy--smoke');
-
-//       deadlysmoke.forEach(element => {
-//         oxo.elements.onCollisionWithElementOnce(character, element, function() {
-//           console.log(element);
-//           if (element.classList.contains('game__enemy--smoke')) {
-//             //le niveau est fini
-//             console.log('niveau fini');
-//             oxo.screens.loadScreen('lost');
-//           }
-
-//         });
-//       })
-//     }, 1500);
-
-//     setTimeout(function () {
-//       smoke.classList.remove('game__enemy--smoke');
-//       deadlysmoke = document.querySelectorAll('.game__enemy--smoke');
-
-//     }, 4500);
-
-
-//   }
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Fonction niveau 2
 function game2() {
@@ -492,112 +287,23 @@ function createObstacles2() {
     });
 
     // bus/voiture
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(470px, 80px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(275px, 440px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(700px, 399px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(793px, 250px) '
-        },
-        appendTo: 'body' // optional
-    });
-
-
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(1100px, 599px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(800px, 0px) rotate(270deg)'
-        },
-        appendTo: 'body' // optional
-    });
+    createBus(470, 80, 0);
+    createBus(275, 440, 0);
+    createBus(700, 399, 90);
+    createBus(793, 250, 0);
+    createBus(1100, 599, 90);
+    createBus(800, 0, 270);
 
     //trash
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(849px, 468px) '
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(300px, 368px) '
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(480px, 310px) '
-        },
-        appendTo: 'body' // optional
-    });
+    createTrash(849, 468);
+    createTrash(300, 368);
+    createTrash(480, 310);
 
     //Barrière 
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(0px, 60px)'
-        },
-        appendTo: 'body' // optional
-    });
-
+    createBarriere(0, 60, 0);
+    createBarriere(205, 60, 0);
+    createBarriere(882, 60, 0);
+    createBarriere(1080, 60, 0);
 
     var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -605,38 +311,6 @@ function createObstacles2() {
         obstacle: true, // optional,
         styles: { // optional
             transform: 'translate(410px, 60px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(205px, 60px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(882px, 60px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(1080px, 60px)'
         },
         appendTo: 'body' // optional
     });
@@ -662,123 +336,24 @@ function createObstacles2() {
     });
 
     //Ennemi/crs
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy5 crs', // optional,
-        styles: { // optional
-            transform: 'translate(490px, 520px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy6 crs', // optional,
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy7 crs', // optional,
-        styles: { // optional
-            transform: 'translate(0px, 570px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy8 crs', // optional,
-        styles: { // optional
-            transform: 'translate(0px, 485px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy9 crs', // optional,
-        styles: { // optional
-            transform: 'translate(240px, 520px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy10 crs', // optional,
-        styles: { // optional
-            transform: 'translate(240px, 440px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy11 crs', // optional,
-        styles: { // optional
-            transform: 'translate(0px, 400px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy12 crs', // optional,
-        styles: { // optional
-            transform: 'translate(370px, 500px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy13 crs', // optional,
-        styles: { // optional
-            transform: 'translate(240px, 610px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy14 crs', // optional,
-        styles: { // optional
-            transform: 'translate(560px, 500px)'
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy15 crs', // optional,
-        appendTo: 'body' // optional
-    });
-
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy16 crs', // optional,
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy enemy17 crs', // optional,
-        appendTo: 'body' // optional
-    });
-
-
-
-
-
+    createCrs(490, 520, 'move5', 0.5);
+    createCrs(1020, 490, 'move6', 0.5);
+    createCrs(0, 570, 'move7', 0.5);
+    createCrs(0, 485, 'move8', 0.5);
+    createCrs(240, 520, 'move9', 0.5);    
+    createCrs(240, 440, 'move10', 0.5);
+    createCrs(0, 400, 'move11', 0.5);
+    createCrs(370, 500, 'move12', 0.8);
+    createCrs(240, 610, 'move13', 0.5);
+    createCrs(560, 500, 'move14', 0.8);    
+    createCrs(1070, 625, 'move15', 0.5);
+    createCrs(1070, 100, 'move16', 0.5);
+    createCrs(220, 90, 'move17', 0.5);
 
     // ennemi smoke
-
     createSmoke(890, 400, character);
-    createSmoke(1030, 400, character);
+    createSmoke(1080, 400, character);
+    createSmoke(980, 400, character);
     createSmoke(1170, 400, character);
     createSmoke(555, 180, character);
     createSmoke(630, 180, character);
@@ -796,197 +371,7 @@ function createObstacles2() {
     createSmoke(1170, 320, character);
     createSmoke(1080, 320, character);
     createSmoke(1170, 230, character);
-    createSmoke(1080, 230, character)
-
-
-    
-
-
-
-
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(890px, 400px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(1030px, 400px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(1170px, 400px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(555px, 180px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-
-
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(630px, 180px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(690px, 180px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(555px, 250px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-
-
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(630px, 250px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(690px, 250px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(275px, 96px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(275px, 161px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(275px, 300px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(275px, 230px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(457px, 584px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(457px, 649px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(457px, 713px)'
-    //     },
-    //     appendTo: 'body' // optional 
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(1170px, 320px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(1080px, 320px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(1170px, 230px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
-    // var element = oxo.elements.createElement({
-    //     type: 'div', // optional
-    //     class: 'game__smoke game__enemy--smoke', // optional,
-    //     styles: { // optional
-    //         transform: 'translate(1080px, 230px)'
-    //     },
-    //     appendTo: 'body' // optional
-    // });
-
+    createSmoke(1080, 230, character);
 
     var smokes = document.querySelectorAll('.game__smoke');
     smokes.forEach(smoke => {
@@ -994,89 +379,13 @@ function createObstacles2() {
         //    setDeadlySmoke();
         //    setInterval(setDeadlySmoke, 6000);
     })
-
-
-
-    //Si collision avec la smoke
-
 }
 
-
-
-
-function setDeadlySmoke(smoky) {
-
-
-    smoky.classList.remove('game__enemy--smoke');
-
-    setTimeout(function () {
-        smoky.classList.add('game__enemy--smoke');
-    }, 1500);
-
-    setTimeout(function () {
-        smoky.classList.remove('game__enemy--smoke');
-
-    }, 4500);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function createSmoke(x, y, character) {
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__smoke game__enemy--smoke', // optional,
-        styles: { // optional
-            transform: 'translate(' + x + 'px, ' + y + 'px)'
-        },
-        appendTo: 'body' // optional
-    });
-    
-    oxo.elements.onCollisionWithElement(character, element, function() {
-        console.log(element.classList.contains('game__enemy--smoke'))
-        if (element.classList.contains('game__enemy--smoke')) {
-            oxo.screens.loadScreen('lost');
-        }
-        
-    });    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Niveau 3
 
 
 function game3() {
     createElements3();
-
-
-
 
     var character = document.querySelector('.game__character');
     var water = document.querySelector('.water');
@@ -1142,7 +451,7 @@ function game3() {
 
 function createElements3() {
     //character
-    var element = oxo.elements.createElement({
+    var character = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__character', // optional,
         obstacle: false,
@@ -1150,15 +459,13 @@ function createElements3() {
             transform: 'translate(100px, 750px)'
         },
         appendTo: 'body' // optional
-    });
+    }); 
 
+    //objectifs
     var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__pave', // optional,
         obstacle: false,
-        styles: {
-            transform: 'translate(290px, 750px)'
-        },
         appendTo: 'body' // optional
     });
 
@@ -1166,9 +473,6 @@ function createElements3() {
         type: 'div', // optional
         class: 'game__fumi', // optional,
         obstacle: false,
-        styles: {
-            transform: 'translate(340px, 750px)'
-        },
         appendTo: 'body' // optional
     });
 
@@ -1223,157 +527,34 @@ function createElements3() {
     });
 
     //bus/voitures
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true,
-        styles: {
-            transform: 'translate(161px, 668px)'
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true,
-        styles: {
-            transform: 'translate(84px, 263px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true,
-        styles: {
-            transform: 'translate(448px, 253px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true,
-        styles: {
-            transform: 'translate(948px, 588px)',
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true,
-        styles: {
-            transform: 'translate(1115px, 467px) rotate(90deg)',
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__obstacle', // optional,
-        obstacle: true,
-        styles: {
-            transform: 'translate(618px, 498px)',
-        },
-        appendTo: 'body' // optional
-    });
+    createBus(161, 668, 0);
+    createBus(84, 263, 90);
+    createBus(448, 253, 90);
+    createBus(948, 588, 0);
+    createBus(1115, 467, 90);
+    createBus(618, 498, 0);
+    
     //crs
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy crs',
-        styles: {
-            transform: 'translate(262px, 369px)',
-            animation: 'move31 0.8s infinite alternate linear'
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy crs',
-        styles: {
-            transform: 'translate(769px, 665px)',
-            animation: 'move32 0.5s infinite alternate linear'
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__enemy crs',
-        styles: {
-            transform: 'translate(950px, 226px)',
-            animation: 'move33 0.5s infinite alternate linear'
-        },
-        appendTo: 'body' // optional
-    });
-    //poubelles
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash',
-        obstacle: true,
-        styles: {
-            transform: 'translate(243px, 509px)',
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash',
-        obstacle: true,
-        styles: {
-            transform: 'translate(606px, 359px)',
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash',
-        obstacle: true,
-        styles: {
-            transform: 'translate(686px, 650px)',
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash',
-        obstacle: true,
-        styles: {
-            transform: 'translate(245px, 307px)',
-        },
-        appendTo: 'body' // optional
-    });
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__trash',
-        obstacle: true,
-        styles: {
-            transform: 'translate(295px, 320px)',
-        },
-        appendTo: 'body' // optional
-    });
+    createCrs(262, 369, 'move31', 0.8); 
+    createCrs(769, 665, 'move32', 0.5);
+    createCrs(950, 226, 'move33', 0.5);
 
+    //poubelles
+    createTrash(243, 509);
+    createTrash(606, 359);
+    createTrash(686, 650);
+    createTrash(245, 307);
+    createTrash(295, 320);
+    createTrash(790, 340);
+    createTrash(790, 280);
+    createTrash(790, 220);
 
     //barriere
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(5px, 138px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(210px, 138px)'
-        },
-        appendTo: 'body' // optional
-    });
-
+    createBarriere(5, 138, 0);
+    createBarriere(210, 138, 0);
+    createBarriere(730, 138, 0);
+    createBarriere(883, 138, 0);
+    createBarriere(1080, 138, 0);
 
     var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -1381,36 +562,6 @@ function createElements3() {
         obstacle: true, // optional,
         styles: { // optional
             transform: 'translate(410px, 138px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere--short', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(730px, 138px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(883px, 138px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(1080px, 138px)'
         },
         appendTo: 'body' // optional
     });
@@ -1438,79 +589,121 @@ function createElements3() {
     });
 
     //smokes
+    createSmoke(330, 400, character);
+    createSmoke(420, 400, character);
+    createSmoke(510, 480, character);
+    createSmoke(330, 480, character);
+    createSmoke(420, 480, character);
+    createSmoke(380, 700, character);
+    createSmoke(490, 700, character);
+    createSmoke(490, 620, character);
+    createSmoke(490, 540, character);
+    createSmoke(970, 420, character);
+    createSmoke(1070, 420, character);
+    createSmoke(1170, 420, character);
+    createSmoke(400, 160, character);
+    createSmoke(400, 260, character);
 
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__smoke game__enemy--smoke', // optional,
-        styles: { // optional
-            transform: 'translate(330px, 400px)'
-        },
-        appendTo: 'body' // optional
-    });
+    createSmoke(300, 160, character);
+    createSmoke(300, 260, character);
 
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__smoke game__enemy--smoke', // optional,
-        styles: { // optional
-            transform: 'translate(330px, 480px)'
-        },
-        appendTo: 'body' // optional
-    });
+    createSmoke(200, 160, character);
+    createSmoke(200, 260, character);
 
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__smoke game__enemy--smoke', // optional,
-        styles: { // optional
-            transform: 'translate(450px, 400px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__smoke game__enemy--smoke', // optional,
-        styles: { // optional
-            transform: 'translate(450px, 480px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__smoke game__enemy--smoke', // optional,
-        styles: { // optional
-            transform: 'translate(500px, 580px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__smoke game__enemy--smoke', // optional,
-        styles: { // optional
-            transform: 'translate(500px, 680px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__smoke game__enemy--smoke', // optional,
-        styles: { // optional
-            transform: 'translate(380px, 680px)'
-        },
-        appendTo: 'body' // optional
-    });
-
+    createSmoke(100, 260, character);
+    createSmoke(5, 160, character);
 
     var smokes = document.querySelectorAll('.game__smoke');
     smokes.forEach(smoke => {
         setInterval(function () { setDeadlySmoke(smoke); }, 6000);
-        //    setDeadlySmoke();
-        //    setInterval(setDeadlySmoke, 6000);
     })
 }
 
 
+//Gestion des smokes
+
+function setDeadlySmoke(smoky) {
 
 
+    smoky.classList.remove('game__enemy--smoke');
+
+    setTimeout(function () {
+        smoky.classList.add('game__enemy--smoke');
+    }, 1500);
+
+    setTimeout(function () {
+        smoky.classList.remove('game__enemy--smoke');
+
+    }, 4500);
+
+}
+
+//Fonctions de génération des différents elements utilisés
+
+function createBarriere(x, y, deg){
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__barriere', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+            transform: 'translate(' + x + 'px, ' + y +'px) rotate(' + deg + 'deg)'
+        },
+        appendTo: 'body' // optional
+    });
+    
+}
+
+function createCrs(x, y, anim, time){
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__enemy crs',
+        styles: {
+            transform: 'translate(' + x + 'px, ' + y + 'px)',
+            animation: anim +' ' + time+'s infinite alternate linear'
+        },
+        appendTo: 'body' // optional
+    });    
+}
+
+function createTrash(x, y){
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__trash',
+        obstacle: true,
+        styles: {
+            transform: 'translate(' + x + 'px, ' + y + 'px)',
+        },
+        appendTo: 'body' // optional
+    });
+}
+
+function createBus(x, y, deg){
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__obstacle', // optional,
+        obstacle: true,
+        styles: {
+            transform: 'translate(' + x + 'px, ' + y + 'px) rotate(' + deg + 'deg)'
+        },
+        appendTo: 'body' // optional
+    });
+}
+
+function createSmoke(x, y, character) {
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__smoke game__enemy--smoke', // optional,
+        styles: { // optional
+            transform: 'translate(' + x + 'px, ' + y + 'px)'
+        },
+        appendTo: 'body' // optional
+    });
+    
+    oxo.elements.onCollisionWithElement(character, element, function() {
+        console.log(element.classList.contains('game__enemy--smoke'))
+        if (element.classList.contains('game__enemy--smoke')) {
+            oxo.screens.loadScreen('lost');
+        }
+        
+    });    
+}

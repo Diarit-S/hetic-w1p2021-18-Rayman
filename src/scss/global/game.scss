@@ -31,28 +31,25 @@
     position: absolute;
 }
 
-.enemy1 {
-    transform: translate(1250px, 500px);
-    animation: move1 0.5s infinite alternate linear;
-}
+
 @include animation-mixin(move1, 1070px, 500px);
 
-.enemy2{
-    transform: translate(1070px, 330px);
-    animation: move2 0.5s infinite alternate linear;
-}
-@include animation-mixin(move2, 1250px, 330px);
+// .enemy2{
+//     transform: translate(1070px, 330px);
+//     animation: move2 0.5s infinite alternate linear;
+// }
+@include animation-mixin(move2, 1070px, 330px);
 
-.enemy3{
-    transform: translate(800px, 220px);
-    animation: move3 0.6s infinite alternate linear;
-}
+// .enemy3{
+//     transform: translate(800px, 220px);
+//     animation: move3 0.6s infinite alternate linear;
+// }
 @include animation-mixin(move3, 545px, 220px);
 
-.enemy4{
-    transform: translate(950px, 335px);
-    animation: move4 0.5s infinite alternate linear;
-}
+// .enemy4{
+//     transform: translate(950px, 335px);
+//     animation: move4 0.5s infinite alternate linear;
+// }
 @include animation-mixin(move4, 850px, 335px);
 
 
@@ -80,25 +77,28 @@
     position: absolute;
 }
 
-.game__score--sign {
-    position: absolute;
-    transform: translate(15px , 15px);
-    font-family: 'obelixpro';
-    font-size: 10px;
-}
-
 .game__score--megaphone {
     position: absolute;
-    transform: translate(15px , 2px);
+    transform: translate(120px , 5px);
+    color: white;
+    font-size: 12px;
     font-family: 'obelixpro';
-    font-size: 10px;
 }
 
 .game__score--cone {
     position: absolute;
-    transform: translate(15px , 5px);
+    transform: translate(120px , 34px);
+    color: white;
+    font-size: 12px;
     font-family: 'obelixpro';
-    font-size: 10px;
+}
+
+.game__score--sign {
+    position: absolute;
+    transform: translate(300px , 5px);
+    color: white;
+    font-size: 12px;
+    font-family: 'obelixpro';
 }
 
 .game__score--jacket{
@@ -156,89 +156,18 @@
     position: absolute;
 }
 
-
-
-.enemy5{
-    transform: translate(490px, 520px);
-    animation: move5 0.5s infinite alternate linear;
-}
-
 @include animation-mixin(move5, 500px, 370px);
-
-.enemy6{
-    transform: translate(1020px, 490px);
-    animation: move6 0.5s infinite alternate linear;
-}
-@include animation-mixin(move6, 1020px, 625px);
-
-
-.enemy7{
-    transform: translate(0px, 570px);
-    animation: move7 0.5s infinite alternate linear;
-}
-@include animation-mixin(move7, 240px, 570px);
-
-.enemy8{
-    transform: translate(0px, 485px);
-    animation: move8 0.5s infinite alternate linear;
-}
-@include animation-mixin(move8, 240px, 485px);
-
-.enemy9{
-    transform: translate(240px, 520px);
-    animation: move9 0.5s infinite alternate linear;
-}
 @include animation-mixin(move9, 0px, 520px);
-
-
-
-.enemy10{
-    transform: translate(240px, 440px);
-    animation: move10 0.5s infinite alternate linear;
-}
+@include animation-mixin(move7, 240px, 570px);
+@include animation-mixin(move8, 240px, 485px);
+@include animation-mixin(move6, 1020px, 625px);
 @include animation-mixin(move10, 0px, 440px);
-
-.enemy11{
-    transform: translate(0px, 400px);
-    animation: move11 0.5s infinite alternate linear;
-}
 @include animation-mixin(move11, 240px, 400px);
-
-.enemy12{
-    // transform: translate(370px, 500px); 
-    animation: move12 0.8s infinite alternate linear;
-}
 @include animation-mixin(move12, 370px, 760px);
-
-
-.enemy13{
-    transform: translate(240px, 610px);
-    animation: move13 0.5s infinite alternate linear;
-}
 @include animation-mixin(move13, 0px, 610px);
-
-.enemy14{
-    transform: translate(600px, 560px);
-    animation: move14 0.8s infinite alternate linear;
-}
 @include animation-mixin(move14, 560px, 760px);
-
-.enemy15{
-    transform: translate(1070px, 625px);
-    animation: move15 0.5s infinite alternate linear;
-}
 @include animation-mixin(move15, 1070px, 490px);
-
-.enemy16{
-    transform: translate(1070px, 100px);
-    animation: move16 0.4s infinite alternate linear;
-}
 @include animation-mixin(move16, 1070px, 200px);
-
-.enemy17{
-    transform: translate(220px, 90px);
-    animation: move17 0.6s infinite alternate linear;
-}
 @include animation-mixin(move17, 220px, 320px);
 
 //Fin Element-victoire niveau 2
@@ -264,13 +193,14 @@
     position: absolute;
     background-image: url('../medias/brick.svg');
     background-repeat: no-repeat;
-    transform: translate(655px, 700px);
+    transform: translate(260px, 700px);
 }
 
 .game__fumi {
     width: 40px;
     height: 40px;
     background-image: url('../medias/fumigene.svg');
+    transform: translate(20px,280px);
     position: absolute;
 }
 
@@ -334,7 +264,6 @@
 .game__smoke {
     width: 80px;
     height: 60px;
-    // background-color: red;
     position: absolute;
 
     &:after {
@@ -365,16 +294,6 @@
 
 
 
-//animer ennemis
-
-@include animation-mixin(move83, 0px, 0px);
-
-@include animation-mixin(move31, 262px, 431px);
-@include animation-mixin(move32, 769px, 742px);
-@include animation-mixin(move33, 950px, 363px);
-@include animation-mixin(move89, 1200px, 290px);
-@include animation-mixin(move, 700px, 50px);
-@include animation-mixin(move34, 673px, 404px);
 
 
 
@@ -400,16 +319,26 @@
 
 .game__score--fumi{
     position: absolute;
-    transform: translate(15px , 8px);
-    font-size: 10px;
-    font-family: 'obelixpro';
+    transform: translate(120px , 34px);
     color: white;
+    font-size: 12px;
+    font-family: 'obelixpro';
 }
 
 .game__score--pave{
     position: absolute;
-    transform: translate(15px , 25px);
-    font-family: 'obelixpro';
+    transform: translate(120px , 5px);
     color: white;
-    font-size: 10px;
+    font-size: 12px;
+    font-family: 'obelixpro';
 }
+
+//animate enemies
+
+@include animation-mixin(move83, 0px, 0px);
+@include animation-mixin(move31, 262px, 431px);
+@include animation-mixin(move32, 769px, 742px);
+@include animation-mixin(move33, 950px, 363px);
+@include animation-mixin(move89, 1200px, 290px);
+@include animation-mixin(move, 700px, 50px);
+@include animation-mixin(move34, 673px, 404px);
