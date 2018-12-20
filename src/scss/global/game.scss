@@ -165,23 +165,23 @@
 @include animation-mixin(move5, 950px, 300px);
 
 .enemy6{
-    transform: translate(950px, 335px);
+    transform: translate(950px, 310px);
     animation: move6 0.5s infinite alternate linear;
 }
-@include animation-mixin(move6, 950px, 300px);
+@include animation-mixin(move6, 950px, 310px);
 
 
 .enemy7{
-    transform: translate(0px, 600px);
+    transform: translate(0px, 570px);
     animation: move7 0.5s infinite alternate linear;
 }
-@include animation-mixin(move7, 240px, 600px);
+@include animation-mixin(move7, 240px, 570px);
 
 .enemy8{
-    transform: translate(0px, 520px);
+    transform: translate(0px, 485px);
     animation: move8 0.5s infinite alternate linear;
 }
-@include animation-mixin(move8, 240px, 520px);
+@include animation-mixin(move8, 240px, 485px);
 
 .enemy9{
     transform: translate(240px, 520px);
@@ -198,16 +198,16 @@
 @include animation-mixin(move10, 0px, 440px);
 
 .enemy11{
-    transform: translate(0px, 440px);
+    transform: translate(0px, 400px);
     animation: move11 0.5s infinite alternate linear;
 }
-@include animation-mixin(move11, 240px, 440px);
+@include animation-mixin(move11, 240px, 400px);
 
 .enemy13{
-    transform: translate(240px, 600px);
+    transform: translate(240px, 610px);
     animation: move13 0.5s infinite alternate linear;
 }
-@include animation-mixin(move13, 0px, 600px);
+@include animation-mixin(move13, 0px, 610px);
 
 
 

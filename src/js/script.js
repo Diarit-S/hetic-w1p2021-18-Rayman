@@ -1,22 +1,21 @@
 var character;
 
-oxo.screens.loadScreen('game2', function() {
-    game2();
+// oxo.screens.loadScreen('game2', function() {
+//     game2();
     
-});
-
-
-// //lancer le jeu depuis la home 
-// var play = document.getElementById('homeplay');
-// console.log(play);
-
-// play.addEventListener('click', function(){
-//     oxo.screens.loadScreen('game', function() {
-//         game();
-//         console.log('chargé');
-        
-//     });
 // });
+
+setTimeout(() => {
+    var playBtn = document.querySelector('.home__play');
+    playBtn.addEventListener('click', function () {
+      console.log("jhebfbdbhf")
+      oxo.screens.loadScreen('game', function () {
+        game();
+      })
+    })
+}, 100);
+
+
 
 
 
@@ -37,6 +36,8 @@ function game() {
     var scorejacket = 0;
     var scorecap = 0;
     var falsebarier = document.querySelector('.false__barier');
+    var audio = document.getElementById('sound');
+
     
 
     //bouger character avec les keys directionnelles
@@ -46,6 +47,7 @@ function game() {
     oxo.elements.onCollisionWithElementOnce(character, yellowjacket, function() {
         //on supprime l'element et on l'ajout à l'inventaire
         scorejacket = 1;
+        audio.play();
         yellowjacket.classList.add('invisible');
         document.querySelector('.game__score--jacket').innerText = "Gilet jaune : " + scorejacket + "/1";
     });   
@@ -55,6 +57,7 @@ function game() {
     oxo.elements.onCollisionWithElementOnce(character, cap, function() {
         //on supprime l'element et on l'ajout à l'inventaire
         scorecap = 1;
+        audio.play();
         cap.classList.add('invisible');
         document.querySelector('.game__score--cap').innerText = "Bonnet : " + scorecap + "/1";
     });
@@ -676,15 +679,6 @@ function game2() {
      //bouger character avec les keys directionnelles
     oxo.animation.moveElementWithArrowKeys(character, 30);  
 
-//     //Si collision entre character et ligne d'arrivée
-//     oxo.elements.onCollisionWithElement(character,finishline, function(){
-//       if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
-//         oxo.screens.loadScreen('game', function(){
-//           game();
-//           console.log('hello');
-//         });
-//       }; 
-//   });
 
  // Si tous les objets récoltés
 
@@ -705,11 +699,6 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
 };
 });
 
-
-
-
-
-  
    //on supprime l'element et on l'ajoute à l'inventaire
     //Ajout du megaphone
     oxo.elements.onCollisionWithElementOnce(character, megaphone, function() {
@@ -752,7 +741,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       class: 'game__character', // optional,
       obstacle: false, // optional,
       styles: { // optional
-        transform: 'translate(120px, 750px)'
+        transform: 'translate(120px, 300px)' // 750
       },
       appendTo: 'body' // optional
     });
@@ -968,7 +957,7 @@ var element = oxo.elements.createElement({
       type: 'div', // optional
       class: 'game__enemy enemy7 crs', // optional,
       styles: { // optional
-        transform: 'translate(0px, 600px)'
+        transform: 'translate(0px, 570px)'
       },
       appendTo: 'body' // optional
     });
@@ -977,7 +966,7 @@ var element = oxo.elements.createElement({
       type: 'div', // optional
       class: 'game__enemy enemy8 crs', // optional,
       styles: { // optional
-        transform: 'translate(0px, 520px)'
+        transform: 'translate(0px, 485px)'
       },
       appendTo: 'body' // optional
     });
@@ -1005,7 +994,7 @@ var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__enemy enemy11 crs', // optional,
         styles: { // optional
-          transform: 'translate(0px, 440px)'
+          transform: 'translate(0px, 400px)'
         },
         appendTo: 'body' // optional
       });
@@ -1024,7 +1013,7 @@ var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__enemy enemy13 crs', // optional,
         styles: { // optional
-          transform: 'translate(240px, 600px)'
+          transform: 'translate(240px, 610px)'
         },
         appendTo: 'body' // optional
       });

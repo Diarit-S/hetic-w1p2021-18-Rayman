@@ -4,6 +4,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #FFEE5B;
   width: 100vw;
 
@@ -49,6 +51,7 @@
     color: black;
     border: solid 3px black;
     border-radius: 10px;
+    margin-bottom: 20px;
 
     &:hover {
       color:green;
@@ -62,4 +65,8 @@
 #bastille {
   height: 50%;
   margin-top: 20px;  
+}
+
+.instruction--crs {
+  margin-right: 80px; 
 }
