@@ -12,7 +12,7 @@ a {
     color: black;
 
     &:hover {
-        color: #850913;
+        color: green;
     }
 }
 
@@ -29,8 +29,10 @@ a {
 
 
 .end__title {
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 40px;
+    text-align: center;
+    line-height: 70px;
 }
 
 .end__title--restart {
@@ -49,8 +51,8 @@ a {
 
 
     &:hover {
-        color: #850913;
-       
+        color: green;
+        cursor: pointer;
     }
 }
 
@@ -64,6 +66,7 @@ a {
      animation-direction: alternate;
      animation-timing-function: linear; 
      transform: translateX(-150px); 
+     margin-bottom: 20px;
 
 };
 
