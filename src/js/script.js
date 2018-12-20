@@ -1,7 +1,7 @@
 var character;
 
-oxo.screens.loadScreen('game', function() {
-    game();
+oxo.screens.loadScreen('game2', function() {
+    game2();
     
 });
 
@@ -671,6 +671,7 @@ function game2() {
     var scorecone = 0;
     var scoremegaphone = 0;
     var scoresign = 0;
+    var falsebarier = document.querySelector('.false__barier');
     
      //bouger character avec les keys directionnelles
     oxo.animation.moveElementWithArrowKeys(character, 30);  
@@ -686,10 +687,11 @@ function game2() {
 //   });
 
  // Si tous les objets récoltés
+
  setInterval(function(){
     if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
-        finishline.classList.remove('game__barriere');
-        console.log("okkkkk");
+        finishline.classList.remove('game__barriere--short');
+        falsebarier.classList.add('is-open');
          };
 }, 500)
 
@@ -750,20 +752,32 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       class: 'game__character', // optional,
       obstacle: false, // optional,
       styles: { // optional
-        transform: 'translate(300px, 750px)'
+        transform: 'translate(120px, 750px)'
       },
       appendTo: 'body' // optional
     });
   
-    //Finish-line
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__finishline', // optional,
-      styles: { // optional
-        transform: 'translate(640px, 60px)'
-      },
-      appendTo: 'body' // optional
-    });
+
+    //finishline              copy paste du niveau 1111111111
+  var element = oxo.elements.createElement({
+    type: 'div', // optional
+    class: 'game__barriere--short game__finishline', // optional,
+    obstacle: false, // optional,
+    styles: { // optional
+      transform: 'translate(550px, 150px)'
+    },
+    appendTo: 'body' // optional
+  });
+  // fausse barrière
+var element = oxo.elements.createElement({
+    type: 'div', // optional
+    class: 'false__barier game__barriere--short', // optional,
+    obstacle: true, // optional,
+    styles: { // optional
+      transform: 'translate(550px, 150px)'
+    },
+    appendTo: 'body' // optional
+  });
     
   // bus/voiture
     var element = oxo.elements.createElement({
@@ -771,7 +785,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       class: 'game__obstacle', // optional,
       obstacle: true, // optional,
       styles: { // optional
-        transform: 'translate(470px, 124px)'
+        transform: 'translate(470px, 80px)'
       },
       appendTo: 'body' // optional
     });
@@ -807,25 +821,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       appendTo: 'body' // optional
     });
 
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__trash', // optional,
-      obstacle: true, // optional,
-      styles: { // optional
-        transform: 'translate(849px, 468px) '
-      },
-      appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__trash', // optional,
-      obstacle: true, // optional,
-      styles: { // optional
-        transform: 'translate(300px, 368px) '
-      },
-      appendTo: 'body' // optional
-    });
+    
 
     var element = oxo.elements.createElement({
       type: 'div', // optional
@@ -837,13 +833,55 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       appendTo: 'body' // optional
     });
     
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__obstacle', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+          transform: 'translate(800px, 0px) rotate(270deg)'
+        },
+        appendTo: 'body' // optional
+      });
+
+      //trash
+
+      var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__trash', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+          transform: 'translate(849px, 468px) '
+        },
+        appendTo: 'body' // optional
+      });
+  
+      var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__trash', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+          transform: 'translate(300px, 368px) '
+        },
+        appendTo: 'body' // optional
+      });
+
+      var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__trash', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+          transform: 'translate(480px, 310px) '
+        },
+        appendTo: 'body' // optional
+      });
+
   //Barrière 
     var element = oxo.elements.createElement({
       type: 'div', // optional
       class: 'game__barriere', // optional,
       obstacle: true, // optional,
       styles: { // optional
-        transform: 'translate(10px, 60px)'
+        transform: 'translate(0px, 60px)'
       },
       appendTo: 'body' // optional
     });
@@ -851,20 +889,10 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
   
     var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__barriere', // optional,
+      class: 'game__barriere--short', // optional,
       obstacle: true, // optional,
       styles: { // optional
-        transform: 'translate(430px, 60px)'
-      },
-      appendTo: 'body' // optional
-    });
-  
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__barriere', // optional,
-      obstacle: true, // optional,
-      styles: { // optional
-        transform: 'translate(220px, 60px)'
+        transform: 'translate(410px, 60px)'
       },
       appendTo: 'body' // optional
     });
@@ -874,7 +902,19 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       class: 'game__barriere', // optional,
       obstacle: true, // optional,
       styles: { // optional
-        transform: 'translate(855px, 60px)'
+        transform: 'translate(205px, 60px)'
+      },
+      appendTo: 'body' // optional
+    });
+
+   
+  
+    var element = oxo.elements.createElement({
+      type: 'div', // optional
+      class: 'game__barriere', // optional,
+      obstacle: true, // optional,
+      styles: { // optional
+        transform: 'translate(875px, 60px)'
       },
       appendTo: 'body' // optional
     });
@@ -884,10 +924,30 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       class: 'game__barriere', // optional,
       obstacle: true, // optional,
       styles: { // optional
-        transform: 'translate(1065px, 60px)'
+        transform: 'translate(1080px, 60px)'
       },
       appendTo: 'body' // optional
     });
+
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__barriere--shortest', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+          transform: 'translate(670px, 90px) rotate(90deg)'
+        },
+        appendTo: 'body' // optional
+      });
+
+      var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__barriere--short', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+          transform: 'translate(725px, 60px)'
+        },
+        appendTo: 'body' // optional
+      });
 
   //Ennemi/crs
     
@@ -908,7 +968,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       type: 'div', // optional
       class: 'game__enemy enemy7 crs', // optional,
       styles: { // optional
-        transform: 'translate(30px, 500px)'
+        transform: 'translate(0px, 600px)'
       },
       appendTo: 'body' // optional
     });
@@ -917,7 +977,7 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       type: 'div', // optional
       class: 'game__enemy enemy8 crs', // optional,
       styles: { // optional
-        transform: 'translate(568px, 500px)'
+        transform: 'translate(0px, 520px)'
       },
       appendTo: 'body' // optional
     });
@@ -926,30 +986,31 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
       type: 'div', // optional
       class: 'game__enemy enemy9 crs', // optional,
       styles: { // optional
-        transform: 'translate(950px, 640px)'
+        transform: 'translate(240px, 520px)'
       },
       appendTo: 'body' // optional
     });
 
     var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__enemy enemy10 crs', // optional,
-      styles: { // optional
-        transform: 'translate(1000px, 100px)'
-      },
-      appendTo: 'body' // optional
-    });
+        type: 'div', // optional
+        class: 'game__enemy enemy10 crs', // optional,
+        styles: { // optional
+          transform: 'translate(240px, 440px)'
+        },
+        appendTo: 'body' // optional
+      });
+  
+  
+      var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__enemy enemy11 crs', // optional,
+        styles: { // optional
+          transform: 'translate(0px, 440px)'
+        },
+        appendTo: 'body' // optional
+      });
 
-    var element = oxo.elements.createElement({
-      type: 'div', // optional
-      class: 'game__enemy enemy11 crs', // optional,
-      styles: { // optional
-        transform: 'translate(490px, 500px)'
-      },
-      appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
+ var element = oxo.elements.createElement({
       type: 'div', // optional
       class: 'game__enemy enemy12 crs', // optional,
       styles: { // optional
@@ -960,14 +1021,36 @@ if ( scorecone == 1 && scoremegaphone == 1 && scoresign ==1){
 
 
     var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__enemy enemy13 crs', // optional,
+        styles: { // optional
+          transform: 'translate(240px, 600px)'
+        },
+        appendTo: 'body' // optional
+      });
+    
+
+    var element = oxo.elements.createElement({
       type: 'div', // optional
-      class: 'game__enemy enemy13 crs', // optional,
+      class: 'game__enemy enemy15 crs', // optional,
       styles: { // optional
-        transform: 'translate(240px, 600px)'
+        transform: 'translate(1000px, 100px)'
       },
       appendTo: 'body' // optional
     });
-  
+
+    var element = oxo.elements.createElement({
+      type: 'div', // optional
+      class: 'game__enemy enemy16 crs', // optional,
+      styles: { // optional
+        transform: 'translate(490px, 500px)'
+      },
+      appendTo: 'body' // optional
+    });
+
+   
+
+
   
 // ennemi smoke
 
@@ -1032,7 +1115,7 @@ var element = oxo.elements.createElement({
     type: 'div', // optional
     class: 'game__smoke game__enemy--smoke', // optional,
     styles: { // optional
-      transform: 'translate(579px, 96px)'
+      transform: 'translate(555px, 180px)'
     },
     appendTo: 'body' // optional
   });
@@ -1044,7 +1127,7 @@ var element = oxo.elements.createElement({
     type: 'div', // optional
     class: 'game__smoke game__enemy--smoke', // optional,
     styles: { // optional
-      transform: 'translate(670px, 96px)'
+      transform: 'translate(630px, 180px)'
     },
     appendTo: 'body' // optional
   });
@@ -1053,7 +1136,37 @@ var element = oxo.elements.createElement({
     type: 'div', // optional
     class: 'game__smoke game__enemy--smoke', // optional,
     styles: { // optional
-      transform: 'translate(778px, 96px)'
+      transform: 'translate(690px, 180px)'
+    },
+    appendTo: 'body' // optional 
+  });
+
+  var element = oxo.elements.createElement({
+    type: 'div', // optional
+    class: 'game__smoke game__enemy--smoke', // optional,
+    styles: { // optional
+      transform: 'translate(555px, 250px)'
+    },
+    appendTo: 'body' // optional
+  });
+
+  
+
+
+var element = oxo.elements.createElement({
+    type: 'div', // optional
+    class: 'game__smoke game__enemy--smoke', // optional,
+    styles: { // optional
+      transform: 'translate(630px, 250px)'
+    },
+    appendTo: 'body' // optional
+  });
+
+var element = oxo.elements.createElement({
+    type: 'div', // optional
+    class: 'game__smoke game__enemy--smoke', // optional,
+    styles: { // optional
+      transform: 'translate(690px, 250px)'
     },
     appendTo: 'body' // optional 
   });

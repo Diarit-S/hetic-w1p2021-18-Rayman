@@ -171,20 +171,44 @@
 @include animation-mixin(move6, 950px, 300px);
 
 
-
-
 .enemy7{
-    transform: translate(30px, 100px);
-    animation: move7 2s infinite alternate linear;
+    transform: translate(0px, 600px);
+    animation: move7 0.5s infinite alternate linear;
 }
-@include animation-mixin(move7, 30px, 300px);
+@include animation-mixin(move7, 240px, 600px);
+
+.enemy8{
+    transform: translate(0px, 520px);
+    animation: move8 0.5s infinite alternate linear;
+}
+@include animation-mixin(move8, 240px, 520px);
+
+.enemy9{
+    transform: translate(240px, 520px);
+    animation: move9 0.5s infinite alternate linear;
+}
+@include animation-mixin(move9, 0px, 520px);
 
 
-.enemy7{
-    transform: translate(30px, 100px);
-    animation: move7 2s infinite alternate linear;
+
+.enemy10{
+    transform: translate(240px, 440px);
+    animation: move10 0.5s infinite alternate linear;
 }
-@include animation-mixin(move7, 30px, 300px);
+@include animation-mixin(move10, 0px, 440px);
+
+.enemy11{
+    transform: translate(0px, 440px);
+    animation: move11 0.5s infinite alternate linear;
+}
+@include animation-mixin(move11, 240px, 440px);
+
+.enemy13{
+    transform: translate(240px, 600px);
+    animation: move13 0.5s infinite alternate linear;
+}
+@include animation-mixin(move13, 0px, 600px);
+
 
 
 //Fin Element-victoire niveau 2
@@ -210,6 +234,20 @@
     height: 20px;
     background-image: url('../medias/barriere-blanche.svg');
     // background-color:black; 
+    position: absolute;
+}
+
+.game__barriere--short {
+    width: 157px;
+    height: 20px;
+    background-image: url('../medias/barriere-blanche.svg');
+    position: absolute;
+}
+
+.game__barriere--shortest {
+    width: 80px;
+    height: 20px;
+    background-image: url('../medias/barriere-blanche.svg');
     position: absolute;
 }
 .is-open {
