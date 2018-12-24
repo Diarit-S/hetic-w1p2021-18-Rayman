@@ -236,7 +236,7 @@ function game2() {
     //Ajout du panneau
     oxo.elements.onCollisionWithElementOnce(character, sign, function () {
         scoresign = 1;
-        audio2.play();
+        audio.play();
         sign.classList.add('invisible');
         document.querySelector('.game__score--sign').innerText = " Panneau : " + scoresign + "/1";
     });
