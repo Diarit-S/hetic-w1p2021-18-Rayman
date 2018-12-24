@@ -193,6 +193,7 @@ function game2() {
     var scoremegaphone = 0;
     var scoresign = 0;
     var falsebarier = document.querySelector('.false__barier');
+    var audio = document.getElementById('sound');
 
     //bouger character avec les keys directionnelles
     oxo.animation.moveElementWithArrowKeys(character, 150);
@@ -221,18 +222,21 @@ function game2() {
     //Ajout du megaphone
     oxo.elements.onCollisionWithElementOnce(character, megaphone, function () {
         scoremegaphone = 1;
+        audio.play();
         megaphone.classList.add('invisible');
         document.querySelector('.game__score--megaphone').innerText = "Megaphone : " + scoremegaphone + "/1";
     });
     //Ajout du megaphone
     oxo.elements.onCollisionWithElementOnce(character, cone, function () {
         scorecone = 1;
+        audio.play();
         cone.classList.add('invisible');
         document.querySelector('.game__score--cone').innerText = " Cone de signalisation : " + scorecone + "/1";
     });
     //Ajout du panneau
     oxo.elements.onCollisionWithElementOnce(character, sign, function () {
         scoresign = 1;
+        audio2.play();
         sign.classList.add('invisible');
         document.querySelector('.game__score--sign').innerText = " Panneau : " + scoresign + "/1";
     });
@@ -375,9 +379,8 @@ function createObstacles2() {
 
     var smokes = document.querySelectorAll('.game__smoke');
     smokes.forEach(smoke => {
-        setInterval(function () { setDeadlySmoke(smoke); }, 6000);
-        //    setDeadlySmoke();
-        //    setInterval(setDeadlySmoke, 6000);
+        setInterval(function () { setDeadlySmoke(smoke); }, 4000);
+        
     })
 }
 
@@ -391,7 +394,6 @@ function game3() {
     var water = document.querySelector('.water');
     var enemies = document.querySelectorAll('.game__enemy');
     var obstacles = document.querySelectorAll('.game__obstacle');
-
     var fumi = document.querySelector('.game__fumi');
     var pave = document.querySelector('.game__pave');
     var scorepave = 0;
@@ -400,6 +402,7 @@ function game3() {
     var textfumi = document.getElementById('fumi');
     var finishline = document.querySelector('.game__finishline');
     var falsebarier = document.querySelector('.false__barier');
+    var audio = document.getElementById('sound');
 
     oxo.animation.moveElementWithArrowKeys(character, 150);
 
@@ -415,11 +418,13 @@ function game3() {
 
     oxo.elements.onCollisionWithElementOnce(character, pave, function () {
         pave.classList.add('invisible');
+        audio.play();
         scorepave++;
         textpave.innerHTML = 'Pave: 1/1';
     });
     oxo.elements.onCollisionWithElementOnce(character, fumi, function () {
         fumi.classList.add('invisible');
+        audio.play();
         scorefumi++;
         textfumi.innerHTML = 'Fumigene: 1/1';
     });
@@ -615,7 +620,7 @@ function createElements3() {
 
     var smokes = document.querySelectorAll('.game__smoke');
     smokes.forEach(smoke => {
-        setInterval(function () { setDeadlySmoke(smoke); }, 6000);
+        setInterval(function () { setDeadlySmoke(smoke); }, 4000);
     })
 }
 
@@ -623,20 +628,14 @@ function createElements3() {
 //Gestion des smokes
 
 function setDeadlySmoke(smoky) {
-
-
-    smoky.classList.remove('game__enemy--smoke');
-
-    setTimeout(function () {
-        smoky.classList.add('game__enemy--smoke');
-    }, 1500);
-
     setTimeout(function () {
         smoky.classList.remove('game__enemy--smoke');
-
-    }, 4500);
-
+    }, 300);
+    setTimeout(function () {
+        smoky.classList.add('game__enemy--smoke');
+    }, 2900);
 }
+
 
 //Fonctions de génération des différents elements utilisés
 
@@ -694,7 +693,9 @@ function createSmoke(x, y, character) {
         type: 'div', // optional
         class: 'game__smoke game__enemy--smoke', // optional,
         styles: { // optional
-            transform: 'translate(' + x + 'px, ' + y + 'px)'
+            left: x + 'px',
+            top: y + 'px',
+            // transform: 'translate(' + x + 'px, ' + y + 'px)'
         },
         appendTo: 'body' // optional
     });

@@ -1,10 +1,19 @@
 @mixin animation-mixin($name, $posX, $posY) {
     @keyframes #{$name} {
-        to{
+        to {
             transform: translate($posX, $posY);
         }
     }
 }
+
+
+// @keyframes smokyMoves {
+//     to {
+//         transform: translateY(70px)
+//     }
+// }
+
+
 
 .bastille {
     width: 1280px;
@@ -21,6 +30,7 @@
     transform: translate(640px, 700px);
     position: absolute;
 }
+
 .crs {
     background-image: url('../medias/casque-crs.svg');
 }
@@ -79,7 +89,7 @@
 
 .game__score--megaphone {
     position: absolute;
-    transform: translate(120px , 5px);
+    transform: translate(120px, 5px);
     color: white;
     font-size: 12px;
     font-family: 'obelixpro';
@@ -87,7 +97,7 @@
 
 .game__score--cone {
     position: absolute;
-    transform: translate(120px , 34px);
+    transform: translate(120px, 34px);
     color: white;
     font-size: 12px;
     font-family: 'obelixpro';
@@ -95,23 +105,24 @@
 
 .game__score--sign {
     position: absolute;
-    transform: translate(300px , 5px);
+    transform: translate(300px, 5px);
     color: white;
     font-size: 12px;
     font-family: 'obelixpro';
 }
 
-.game__score--jacket{
+.game__score--jacket {
     position: absolute;
-    transform: translate(120px , 5px);
+    transform: translate(120px, 5px);
     color: white;
     font-size: 12px;
     font-family: 'obelixpro';
 
 }
+
 .game__score--cap {
     position: absolute;
-    transform: translate(120px , 34px);
+    transform: translate(120px, 34px);
     color: white;
     font-size: 12px;
     font-family: 'obelixpro';
@@ -132,6 +143,7 @@
     background-image: url('../medias/champs.jpg');
     position: absolute;
 }
+
 .game__megaphone {
     width: 40px;
     height: 40px;
@@ -172,12 +184,12 @@
 
 //Fin Element-victoire niveau 2
 
-.game__trash {		
-    width: 65px;		
-    height: 60px;		
-     position: absolute;		
-      background-image: url('../medias/trash.svg');	
-    }
+.game__trash {
+    width: 65px;
+    height: 60px;
+    position: absolute;
+    background-image: url('../medias/trash.svg');
+}
 
 .game__cap {
     width: 40px;
@@ -200,7 +212,7 @@
     width: 40px;
     height: 40px;
     background-image: url('../medias/fumigene.svg');
-    transform: translate(20px,280px);
+    transform: translate(20px, 280px);
     position: absolute;
 }
 
@@ -226,12 +238,13 @@
     background-image: url('../medias/barriere-blanche.svg');
     position: absolute;
 }
+
 .is-open {
     display: none;
 }
 
 .game__tank {
-    width : 286px;
+    width: 286px;
     height: 92px;
     background: url('../medias/camionhorizontaldroit.svg');
     background-size: cover;
@@ -245,19 +258,19 @@
             height: 10px;
             background-color: aqua;
         }
-      
+
         to {
             width: 200px;
             height: 10px;
             background-color: aqua;
         }
-      }
+    }
 
-     .water {
+    .water {
         animation: show-and-hide 0.7s infinite alternate;
         transform: translate(280px, 14px);
         border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;   
+        border-bottom-right-radius: 20px;
     }
 }
 
@@ -265,30 +278,38 @@
     width: 80px;
     height: 60px;
     position: absolute;
+    // animation: smokyMoves 0.1s infinite alternate; 
 
     &:after {
         content: '';
         display: block;
         width: 110px;
         height: 200px;
-        opacity: 0;
         transform: translate(-10px, -10px);
         background-image: url('../medias/smoke.svg');
         background-repeat: no-repeat;
-
-    }
-
-  &.game__enemy--smoke {
-      &:after {
         @keyframes smoke {
-            50%{
+            from {
                 opacity: 1;
             }
-           
-          }
-            animation: smoke 3.6s infinite alternate;
-      } 
-  }
+            
+            33% {
+                opacity: 0;
+               
+            }
+
+            66% {
+                opacity: 0; 
+            } 
+
+            to {
+                opacity: 1;  
+            }
+
+        }
+        animation: smoke 4s infinite;   
+    }
+
 }
 
 
@@ -317,17 +338,17 @@
     position: absolute;
 }
 
-.game__score--fumi{
+.game__score--fumi {
     position: absolute;
-    transform: translate(120px , 34px);
+    transform: translate(120px, 34px);
     color: white;
     font-size: 12px;
     font-family: 'obelixpro';
 }
 
-.game__score--pave{
+.game__score--pave {
     position: absolute;
-    transform: translate(120px , 5px);
+    transform: translate(120px, 5px);
     color: white;
     font-size: 12px;
     font-family: 'obelixpro';
