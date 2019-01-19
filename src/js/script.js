@@ -134,7 +134,7 @@ function createObstacles() {
     // bus
     createBus(470, 116, 0);
     createBus(470, 347, 0);
-    createBus(470, 578, 0);
+    createBus(400, 578, 0);
     createBus(626, 400, 90);
     createBus(850, 400, 90);
     createBus(1000, 325, 0);
@@ -159,8 +159,18 @@ function createObstacles() {
 
     //Barrière 
     createBarriere(660, 100, 90);
-    createBarriere(855, 63, 0);
-    createBarriere(1065, 63, 0);
+    createBarriere(855, 0, 0);
+    createBarriere(1065, 0, 0);
+    createBarriere(1170, 50, 90);
+    createBarriere(1170, 250, 90);
+    createBarriere(1170, 450, 90);
+    createBarriere(1170, 650, 90);
+    createBarriere(1070, 780, 0);
+    createBarriere(870, 780, 0);
+    createBarriere(670, 780, 0);
+    createBarriere(470, 780, 0);
+
+
     
 
     //Ennemi/crs
@@ -263,7 +273,7 @@ function createObstacles2() {
         class: 'game__character', // optional,
         obstacle: false, // optional,
         styles: { // optional
-            transform: 'translate(120px, 750px)'
+            transform: 'translate(120px, 710px)'
         },
         appendTo: 'body' // optional
     });
@@ -308,6 +318,16 @@ function createObstacles2() {
     createBarriere(205, 60, 0);
     createBarriere(882, 60, 0);
     createBarriere(1080, 60, 0);
+    createBarriere(1070, 780, 0);
+    createBarriere(870, 780, 0);
+    createBarriere(670, 780, 0);
+    createBarriere(470, 780, 0);
+    createBarriere(270, 780, 0);
+    createBarriere(70, 780, 0);
+    createBarriere(-130, 780, 0);
+    createBarriere(1170, 270, 90);
+    createBarriere(1170, 470, 90);
+    createBarriere(1170, 670, 90);
 
     var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -331,6 +351,16 @@ function createObstacles2() {
 
     var element = oxo.elements.createElement({
         type: 'div', // optional
+        class: 'game__barriere--shortest', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+            transform: 'translate(1229px, 120px) rotate(90deg)'
+        },
+        appendTo: 'body' // optional
+    });
+
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
         class: 'game__barriere--short', // optional,
         obstacle: true, // optional,
         styles: { // optional
@@ -338,6 +368,8 @@ function createObstacles2() {
         },
         appendTo: 'body' // optional
     });
+
+    
 
     //Ennemi/crs
     createCrs(490, 520, 'move5', 0.5);
@@ -461,7 +493,7 @@ function createElements3() {
         class: 'game__character', // optional,
         obstacle: false,
         styles: {
-            transform: 'translate(100px, 750px)'
+            transform: 'translate(60px, 700px)'
         },
         appendTo: 'body' // optional
     }); 
@@ -531,18 +563,37 @@ function createElements3() {
         appendTo: '.fourth' // optional
     });
 
+    ///////
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__tank last', // optional,
+        obstacle: true,
+        styles: {
+            transform: 'translate(1000px, 540px) scaleX(-1)'
+        },
+        appendTo: 'body' // optional
+    });
+
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'water game__enemy',
+        appendTo: '.last' // optional
+    });
+    //////////
+
     //bus/voitures
-    createBus(161, 668, 0);
+    // createBus(161, 668, 0);
     createBus(84, 263, 90);
     createBus(448, 253, 90);
-    createBus(948, 588, 0);
-    createBus(1115, 467, 90);
+    // createBus(948, 588, 0);
+    // createBus(1115, 467, 90);
     createBus(618, 498, 0);
     
     //crs
     createCrs(262, 369, 'move31', 0.8); 
-    createCrs(769, 665, 'move32', 0.5);
+    createCrs(750, 500, 'move32', 0.5);
     createCrs(950, 226, 'move33', 0.5);
+    createCrs(170, 665, 'move500', 0.3);
 
     //poubelles
     createTrash(243, 509);
@@ -560,6 +611,38 @@ function createElements3() {
     createBarriere(730, 138, 0);
     createBarriere(883, 138, 0);
     createBarriere(1080, 138, 0);
+    createBarriere(1070, 780, 0);
+    createBarriere(870, 780, 0);
+    createBarriere(670, 780, 0);
+    createBarriere(470, 780, 0);
+    createBarriere(270, 780, 0);
+    createBarriere(70, 780, 0);
+    createBarriere(-130, 780, 0);
+    createBarriere(1170, 350, 90);
+    
+
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__barriere--shortest', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+            transform: 'translate(1229px, 490px) rotate(90deg)'
+        },
+        appendTo: 'body' // optional
+    });
+
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__barriere--short', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+            transform: 'translate(1190px, 690px) rotate(90deg)'
+        },
+        appendTo: 'body' // optional
+    });
+
+  
+    
 
     var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -608,6 +691,7 @@ function createElements3() {
     createSmoke(1170, 420, character);
     createSmoke(400, 160, character);
     createSmoke(400, 260, character);
+    
 
     createSmoke(300, 160, character);
     createSmoke(300, 260, character);

@@ -331,8 +331,8 @@
 //niveau 3
 
 .arc {
-    width: 100vw;
-    height: 100vh;
+    width: 1280px;
+    height: 800px;
     background: url('../medias/elysee.jpg');
     background-size: cover;
     position: absolute;
@@ -358,8 +358,9 @@
 
 @include animation-mixin(move83, 0px, 0px);
 @include animation-mixin(move31, 262px, 431px);
-@include animation-mixin(move32, 769px, 742px);
+@include animation-mixin(move32, 750px, 742px);
 @include animation-mixin(move33, 950px, 363px);
 @include animation-mixin(move89, 1200px, 290px);
 @include animation-mixin(move, 700px, 50px);
 @include animation-mixin(move34, 673px, 404px);
+@include animation-mixin(move500, 170px, 742px);
