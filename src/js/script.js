@@ -10,36 +10,26 @@ setTimeout(() => {
 }, 100);
 
 document.addEventListener('keypress', (event) => {
-    if (event.key == "a") {
-        oxo.screens.loadScreen('game', function () {
-            game();
-        });
+    switch (event.key) {
+        case "a":oxo.screens.loadScreen('game', function(){game();});
+        break;
+        case "b":oxo.screens.loadScreen('game2', function(){game2();});
+        break;
+        case "c":oxo.screens.loadScreen('game3', function(){game3();});
+        break;
     }
-    else if (event.key == "b") {
-        oxo.screens.loadScreen('game2', function () {
-            game2();
-        });
-    }
-    else if (event.key == "c") {
-        oxo.screens.loadScreen('game3', function () {
-            game3();
-        });
-    };
 });
-
 
 oxo.inputs.listenKey('enter', function() {
     oxo.screens.loadScreen('game', function(){
         game();
     })
-  });
+});
 
 //level 1
 function game() {
-
     //creation des obstacles: bus, crs, tank etc
     createObstacles();
-
     //initialisation des variables
     character = document.querySelector('.game__character');
     var finishline = document.querySelector('.game__finishline');
@@ -52,12 +42,8 @@ function game() {
     var scorecap = 0;
     var falsebarier = document.querySelector('.false__barier');
     var audio = document.getElementById('sound');
-
-
-
     //bouger character avec les keys directionnelles
     oxo.animation.moveElementWithArrowKeys(character, 150);
-
     //Si collision avec le gilet jaune
     oxo.elements.onCollisionWithElementOnce(character, yellowjacket, function () {
         //on supprime l'element et on l'ajout à l'inventaire
@@ -66,8 +52,6 @@ function game() {
         yellowjacket.classList.add('invisible');
         document.querySelector('.game__score--jacket').innerText = "Gilet jaune : " + scorejacket + "/1";
     });
-
-
 
     oxo.elements.onCollisionWithElementOnce(character, cap, function () {
         //on supprime l'element et on l'ajout à l'inventaire
@@ -86,13 +70,12 @@ function game() {
         };
     }, 500)
 
-
     //Si collision entre character et ligne d'arrivée
     oxo.elements.onCollisionWithElement(character, finishline, function () {
         if (scorecap == 1 && scorejacket == 1) {
-            oxo.screens.loadScreen('game2', function () {
-                game2();
-            });
+                oxo.screens.loadScreen('game2', function () {
+                    game2();
+                });
         };
     });
 
@@ -130,17 +113,14 @@ function createObstacles() {
         appendTo: 'body' // optional
     });
 
-
-    // bus
-    createBus(470, 116, 0);
-    createBus(470, 347, 0);
-    createBus(400, 578, 0);
-    createBus(626, 400, 90);
-    createBus(850, 400, 90);
-    createBus(1000, 325, 0);
-    createBus(780, 0, 0);
-    createBus(700, 250, 270);
-
+    createBus(626, 400, -90);
+    createBus(850, 400, -90);
+    createBus(700, 250, -90);
+    createBusAir(470,116,0);
+    createBusAir(470,347,0);
+    createBusAir(400, 578, 0);
+    createBusAir(780, 0, 0);
+    createBusAir(1000, 325, 0);
 
     //poubelles
     createTrash(550, 335);
@@ -170,16 +150,11 @@ function createObstacles() {
     createBarriere(670, 780, 0);
     createBarriere(470, 780, 0);
 
-
-    
-
     //Ennemi/crs
     createCrs(1250, 500, 'move1', 0.5);
     createCrs(1250, 330, 'move2', 0.5);
     createCrs(700, 220, 'move3', 0.5);
     createCrs(950, 335, 'move4', 0.5);
-
-
 
 }
 
@@ -187,9 +162,7 @@ function createObstacles() {
 function game2() {
 
     //creation des obstacles: bus, crs, tank etc
-
     createObstacles2();
-
     //initialisation des variables
     character = document.querySelector('.game__character');
     var finishline = document.querySelector('.game__finishline');
@@ -208,16 +181,13 @@ function game2() {
     //bouger character avec les keys directionnelles
     oxo.animation.moveElementWithArrowKeys(character, 150);
 
-
     // Si tous les objets récoltés
-
     setInterval(function () {
         if (scorecone == 1 && scoremegaphone == 1 && scoresign == 1) {
             finishline.classList.remove('game__barriere--short');
             falsebarier.classList.add('is-open');
         };
     }, 500)
-
 
     //Si collision entre character et ligne d'arrivée
     oxo.elements.onCollisionWithElement(character, finishline, function () {
@@ -251,8 +221,6 @@ function game2() {
         document.querySelector('.game__score--sign').innerText = " Panneau : " + scoresign + "/1";
     });
 
-
-
     //Si collision entre ennemis et character game over
     enemies.forEach(element => {
         oxo.elements.onCollisionWithElementOnce(character, element, function () {
@@ -263,7 +231,6 @@ function game2() {
     })
 
 };
-
 
 // Création des Élements du niveau 2
 function createObstacles2() {
@@ -301,12 +268,12 @@ function createObstacles2() {
     });
 
     // bus/voiture
-    createBus(470, 80, 0);
-    createBus(275, 440, 0);
-    createBus(700, 399, 90);
-    createBus(793, 250, 0);
-    createBus(1100, 599, 90);
-    createBus(800, 0, 270);
+    createBusAir(470, 80, 0);
+    createBusAir(275, 440, 0);
+    createBusAir(793, 250, 0);
+    createBus(700, 399, -90);
+    createBus(1100, 599, -90);
+    createBus(800, 0, -90);
 
     //trash
     createTrash(849, 468);
@@ -329,15 +296,7 @@ function createObstacles2() {
     createBarriere(1170, 470, 90);
     createBarriere(1170, 670, 90);
 
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere--short', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(410px, 60px)'
-        },
-        appendTo: 'body' // optional
-    });
+    createBarriereShort(410, 60, 0);
 
     var element = oxo.elements.createElement({
         type: 'div', // optional
@@ -359,17 +318,7 @@ function createObstacles2() {
         appendTo: 'body' // optional
     });
 
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere--short', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(725px, 60px)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    
+    createBarriereShort(725, 60, 0);
 
     //Ennemi/crs
     createCrs(490, 520, 'move5', 0.5);
@@ -418,7 +367,6 @@ function createObstacles2() {
 
 //Niveau 3
 
-
 function game3() {
     createElements3();
 
@@ -437,7 +385,6 @@ function game3() {
     var audio = document.getElementById('sound');
 
     oxo.animation.moveElementWithArrowKeys(character, 150);
-
 
     //Si collision entre ennemis et character game over
     enemies.forEach(element => {
@@ -471,7 +418,6 @@ function game3() {
         };
     }, 500)
 
-
     //Si collision entre character et ligne d'arrivée
     oxo.elements.onCollisionWithElement(character, finishline, function () {
         if (scorepave == 1 && scorefumi == 1) {
@@ -482,9 +428,6 @@ function game3() {
     });
 
 }
-
-
-
 
 function createElements3() {
     //character
@@ -563,7 +506,6 @@ function createElements3() {
         appendTo: '.fourth' // optional
     });
 
-    ///////
     var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__tank last', // optional,
@@ -579,15 +521,11 @@ function createElements3() {
         class: 'water game__enemy',
         appendTo: '.last' // optional
     });
-    //////////
 
     //bus/voitures
-    // createBus(161, 668, 0);
-    createBus(84, 263, 90);
-    createBus(448, 253, 90);
-    // createBus(948, 588, 0);
-    // createBus(1115, 467, 90);
-    createBus(618, 498, 0);
+    createBus(84, 263, -90);
+    createBus(448, 253, -90);
+    createBusAir(618, 498, 0);
     
     //crs
     createCrs(262, 369, 'move31', 0.8); 
@@ -619,37 +557,15 @@ function createElements3() {
     createBarriere(70, 780, 0);
     createBarriere(-130, 780, 0);
     createBarriere(1170, 350, 90);
+    createBarriereShort(1190, 690, 90);
+    createBarriereShort(410, 138, 0);
     
-
     var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__barriere--shortest', // optional,
         obstacle: true, // optional,
         styles: { // optional
             transform: 'translate(1229px, 490px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-    });
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere--short', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(1190px, 690px) rotate(90deg)'
-        },
-        appendTo: 'body' // optional
-    });
-
-  
-    
-
-    var element = oxo.elements.createElement({
-        type: 'div', // optional
-        class: 'game__barriere--short', // optional,
-        obstacle: true, // optional,
-        styles: { // optional
-            transform: 'translate(410px, 138px)'
         },
         appendTo: 'body' // optional
     });
@@ -691,14 +607,10 @@ function createElements3() {
     createSmoke(1170, 420, character);
     createSmoke(400, 160, character);
     createSmoke(400, 260, character);
-    
-
     createSmoke(300, 160, character);
     createSmoke(300, 260, character);
-
     createSmoke(200, 160, character);
     createSmoke(200, 260, character);
-
     createSmoke(100, 260, character);
     createSmoke(5, 160, character);
 
@@ -707,7 +619,6 @@ function createElements3() {
         setInterval(function () { setDeadlySmoke(smoke); }, 4000);
     })
 }
-
 
 //Gestion des smokes
 
@@ -719,7 +630,6 @@ function setDeadlySmoke(smoky) {
         smoky.classList.add('game__enemy--smoke');
     }, 2900);
 }
-
 
 //Fonctions de génération des différents elements utilisés
 
@@ -733,7 +643,18 @@ function createBarriere(x, y, deg){
         },
         appendTo: 'body' // optional
     });
-    
+}
+
+function createBarriereShort(x, y, deg){
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__barriere--short', // optional,
+        obstacle: true, // optional,
+        styles: { // optional
+            transform: 'translate(' + x + 'px, ' + y +'px) rotate(' + deg + 'deg)'
+        },
+        appendTo: 'body' // optional
+    });
 }
 
 function createCrs(x, y, anim, time){
@@ -764,6 +685,18 @@ function createBus(x, y, deg){
     var element = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__obstacle', // optional,
+        obstacle: true,
+        styles: {
+            transform: 'translate(' + x + 'px, ' + y + 'px) rotate(' + deg + 'deg)'
+        },
+        appendTo: 'body' // optional
+    });
+}
+
+function createBusAir(x, y, deg){
+    var element = oxo.elements.createElement({
+        type: 'div', // optional
+        class: 'game__obstacle--air', // optional,
         obstacle: true,
         styles: {
             transform: 'translate(' + x + 'px, ' + y + 'px) rotate(' + deg + 'deg)'

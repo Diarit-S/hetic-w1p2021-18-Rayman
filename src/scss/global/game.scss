@@ -73,6 +73,14 @@
     position: absolute;
 }
 
+.game__obstacle--air {
+    width: 68px;
+    height: 200px;
+    background-image: url('../medias/bus-aerien.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
 .game__finishline {
     width: 200px;
     height: 20px;
